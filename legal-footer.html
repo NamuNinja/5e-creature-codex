@@ -1,0 +1,26 @@
+<!-- Legal Footer -->
+<div id="legalFooter" style="position: fixed; bottom: 60px; left: 0; right: 0; background: rgba(93, 92, 222, 0.95); color: white; padding: 8px 16px; text-align: center; font-size: 11px; z-index: 100; display: none;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <p style="margin: 0;">
+            Based on the System Reference Document 5.1 under the <a href="OGL-LICENSE.html" style="color: #FFD700; text-decoration: underline;" target="_blank">Open Game License</a>
+            • Not affiliated with Wizards of the Coast
+            • <button onclick="document.getElementById('legalFooter').style.display='none'" style="background: none; border: none; color: white; cursor: pointer; text-decoration: underline; font-size: 11px; padding: 0; margin-left: 10px;">Dismiss</button>
+        </p>
+    </div>
+</div>
+
+<script>
+// Show legal footer on first load
+if (!localStorage.getItem('legalFooterDismissed')) {
+    setTimeout(() => {
+        document.getElementById('legalFooter').style.display = 'block';
+    }, 2000);
+}
+
+// Remember dismissal
+document.getElementById('legalFooter').addEventListener('click', function(e) {
+    if (e.target.tagName === 'BUTTON') {
+        localStorage.setItem('legalFooterDismissed', 'true');
+    }
+});
+</script>

@@ -1,0 +1,3194 @@
+<!DOCTYPE html>
+<!--
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                         5e CREATURE CODEX v1.3.9                             ║
+║                                                                              ║
+║  APPLICATION AUTHOR: NamuNinja                                              ║
+║  Copyright © 2025 NamuNinja - Original Code & Design ONLY                  ║
+║                                                                              ║
+║  COPYRIGHT SCOPE - What IS copyrighted by NamuNinja:                        ║
+║    • Application source code and implementation                              ║
+║    • User interface design, layout, and styling                             ║
+║    • Custom features and functionality (tracking systems, UI elements)      ║
+║    • Database structure and organization methods                            ║
+║                                                                              ║
+║  OPEN GAME CONTENT - What is NOT copyrighted (OGL 1.0a):                    ║
+║    • All creature statistics, descriptions, and game mechanics              ║
+║    • All spell descriptions and magical effects                             ║
+║    • Game rules and mechanics from SRD 5.1                                  ║
+║    • This content is © 1993-2025 Wizards of the Coast LLC (OGL 1.0a)       ║
+║                                                                              ║
+║  This software application was created by NamuNinja as an                   ║
+║  independent 5th Edition creature reference tool. The original code, design, and ║
+║  implementation are the intellectual property of the author. All game       ║
+║  content (creatures, spells, mechanics) remains under the Open Game         ║
+║  License v1.0a and is the property of Wizards of the Coast LLC.             ║
+║                                                                              ║
+║  EXPORT COMPLIANCE:                                                          ║
+║  This application complies with U.S. Export Administration Regulations      ║
+║  (EAR). It uses only standard encryption (HTTPS/TLS) provided by browsers   ║
+║  and mobile platforms, which qualifies for mass market encryption exemption ║
+║  under EAR Section 740.17(b). No custom encryption algorithms are           ║
+║  implemented. This is a utility application for gaming reference with no    ║
+║  military or strategic applications.                                         ║
+║                                                                              ║
+║  OGL COMPLIANCE:                                                             ║
+║  All creature statistics and spell descriptions are Open Game Content from  ║
+║  the Systems Reference Document (SRD) 5.1, released under the Open Game     ║
+║  License v1.0a by Wizards of the Coast LLC. Full OGL text is included in    ║
+║  the application footer. No Product Identity is used.                       ║
+║                                                                              ║
+║  CHARITY COMMITMENT:                                                         ║
+║  100% of advertising revenue from this mobile application is donated to      ║
+║  Extra Life (Children's Miracle Network Hospitals).                         ║
+║                                                                              ║
+║  Digital Signature:                                                          ║
+║  Application Code: Signed by NamuNinja - November 2025                     ║
+║  Game Content: © 1993-2025 Wizards of the Coast LLC (OGL 1.0a)             ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="NamuNinja - Application Code & Design">
+    <meta name="copyright" content="App Code & Design © 2025 NamuNinja | Game Content © 1993-2025 Wizards of the Coast LLC (OGL 1.0a)">
+    <meta name="creator" content="NamuNinja">
+    <meta name="designer" content="NamuNinja">
+    <meta name="publisher" content="NamuNinja">
+    <meta name="application-name" content="5e Creature Codex">
+    <meta name="version" content="1.3.9">
+    <meta name="versioncode" content="7">
+    <meta name="license" content="App: Copyright 2025 NamuNinja | Content: OGL 1.0a">
+    <title>5e Creature Codex - v1.3.9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+	/* AdSense Top Banner Styling */
+    .ad-container {
+        background: linear-gradient(to bottom, #f5f5f5, #ffffff);
+        border-bottom: 2px solid #5D5CDE;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    /* Dark mode support */
+    .dark .ad-container {
+        background: linear-gradient(to bottom, #2D2D3D, #1a1a2e);
+        border-bottom: 2px solid #8B7CFF;
+    }
+
+    /* Responsive padding */
+    @media (max-width: 768px) {
+        .ad-container {
+            padding: 5px 0;
+        }
+    }
+
+        /* Modal styling */
+        .modal { display: none !important; }
+        .modal.active { display: flex !important; }
+
+        /* Creature card hover effect */
+        .creature-card { transition: all 0.2s; }
+        .creature-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(93, 92, 222, 0.3); }
+
+        /* Badges */
+        .badge { display: inline-block; padding: 2px 6px; border-radius: 3px; font-size: 10px; font-weight: 600; margin-left: 6px; }
+        .badge-srd { background-color: #10b981; color: white; }
+        .badge-custom { background-color: #8b5cf6; color: white; }
+        .dark .badge-srd { background-color: #059669; }
+        .dark .badge-custom { background-color: #7c3aed; }
+
+        /* CR filter buttons */
+        .cr-filter.active { background-color: #5D5CDE !important; color: white !important; border-color: #5D5CDE !important; }
+        .cr-filter { border-color: #d1d5db; }
+        .dark .cr-filter { border-color: #4b5563; }
+
+        /* Add creature button */
+        .add-btn { position: fixed; bottom: 20px; right: 20px; z-index: 50; }
+
+        /* Legendary indicator */
+        .legendary-badge { background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); color: #78350f; font-weight: 700; padding: 3px 8px; border-radius: 4px; font-size: 11px; }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #1f2937; }
+        ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6b7280; }
+
+        /* Banner ad space */
+        .banner-ad { min-height: 50px; }
+
+        /* Action Economy Indicators */
+        .action-indicator {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            margin-right: 6px;
+            font-size: 10px;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+        .action-circle {
+            background-color: #10b981;
+            border-radius: 50%;
+            color: white;
+        }
+        .bonus-action-triangle {
+            width: 0;
+            height: 0;
+            border-left: 9px solid transparent;
+            border-right: 9px solid transparent;
+            border-bottom: 16px solid #ef4444;
+            margin-right: 6px;
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            top: -2px;
+        }
+        .reaction-square {
+            background-color: #3b82f6;
+            color: white;
+            border-radius: 3px;
+        }
+        .action-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 12px;
+            background: #f3f4f6;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+        .dark .action-legend {
+            background: #374151;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+        }
+    </style>
+    <script src="admob-config.js"></script>
+    <script src="web-ads.js"></script>
+    <script src="android-integration.js"></script>
+
+	<!-- Google AdSense -->
+
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9910832991526056"
+     crossorigin="anonymous"></script>
+
+
+</head>
+<body class="bg-white dark:bg-[#181818] text-gray-900 dark:text-gray-100 min-h-screen pb-20">
+
+    <!-- Top Banner Ad -->
+
+    <div id="bannerAd" class="banner-ad bg-gray-100 dark:bg-gray-900 flex items-center justify-center text-sm text-gray-500 dark:text-gray-400">
+        <!-- Google AdSense Banner -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9910832991526056"
+             data-ad-slot="9722531674"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <!-- Import/Export ALL Creatures Button (NEW v1.2.6) -->
+    <button onclick="openImportExportModal()" class="add-btn px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-lg flex items-center gap-2 transition-all hover:scale-105" title="Import or Export all custom creatures" style="position: fixed; right: 24px; bottom: 95px; z-index: 40;">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/>
+        </svg>
+        Import/Export
+    </button>
+
+    <!-- Add Custom Creature Button -->
+    <button onclick="openCreatureForm()" class="add-btn px-6 py-3 bg-[#8b5cf6] hover:bg-[#7c3aed] text-white rounded-full shadow-lg flex items-center gap-2 transition-all hover:scale-105" title="Add custom creature" style="position: fixed; right: 24px; bottom: 24px; z-index: 40;">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+        </svg>
+        Add Creature
+    </button>
+
+    <div class="container mx-auto px-4 py-8 max-w-7xl">
+        <!-- Header -->
+        <header class="mb-8">
+            <h1 class="text-4xl font-bold mb-2 text-[#5D5CDE]">5e Creature Codex</h1>
+            <p class="text-gray-600 dark:text-gray-400">
+                <span id="totalCreatures"></span> total creatures (<span id="srdCount"></span> SRD + <span id="customCount"></span> custom) •
+                100% offline • <span class="text-xs bg-[#5D5CDE] text-white px-2 py-1 rounded">v1.3.9</span> •
+                <button onclick="showConditions()" class="text-xs text-[#5D5CDE] hover:underline cursor-pointer">📖 Conditions Reference</button>
+            </p>
+        </header>
+
+        <!-- Filters -->
+        <div class="mb-6 space-y-4">
+            <div class="flex flex-col sm:flex-row gap-4">
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search creatures..."
+                    class="flex-1 px-4 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-[#5D5CDE]"
+                >
+                <select id="typeFilter" class="px-4 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-[#5D5CDE]">
+                    <option value="">All Types</option>
+                </select>
+                <select id="sourceFilter" class="px-4 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-[#5D5CDE]">
+                    <option value="">All Sources</option>
+                    <option value="SRD">Official SRD</option>
+                    <option value="custom">My Custom</option>
+                </select>
+            </div>
+
+            <!-- CR Range Buttons -->
+            <div class="flex flex-wrap gap-2">
+                <button onclick="filterCR('all')" class="cr-filter active px-3 py-1 text-sm border-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">All CR</button>
+                <button onclick="filterCR('0-0.5')" class="cr-filter px-3 py-1 text-sm border-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">CR 0-1/2</button>
+                <button onclick="filterCR('1-4')" class="cr-filter px-3 py-1 text-sm border-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">CR 1-4</button>
+                <button onclick="filterCR('5-10')" class="cr-filter px-3 py-1 text-sm border-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">CR 5-10</button>
+                <button onclick="filterCR('11-15')" class="cr-filter px-3 py-1 text-sm border-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">CR 11-15</button>
+                <button onclick="filterCR('16-20')" class="cr-filter px-3 py-1 text-sm border-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">CR 16-20</button>
+                <button onclick="filterCR('21+')" class="cr-filter px-3 py-1 text-sm border-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">CR 21+</button>
+            </div>
+
+            <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                <span>Showing:</span>
+                <span id="resultCount" class="font-semibold text-gray-900 dark:text-white">0</span>
+                <span>creatures</span>
+            </div>
+        </div>
+
+        <!-- Battle Tabs Container (NEW v1.2.6) -->
+        <div id="battle-tabs-container" class="mb-6"></div>
+
+        <!-- Creatures Grid -->
+        <div id="creaturesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+
+        <!-- No Results -->
+        <div id="noResults" class="hidden text-center py-12">
+            <p class="text-gray-500 dark:text-gray-400 text-lg">No creatures found matching your filters</p>
+        </div>
+
+        <!-- Legal Disclaimer & Footer -->
+        <footer class="mt-12 pt-8 border-t border-gray-300 dark:border-gray-700">
+            <!-- Extra Life Charity Notice -->
+            <div class="text-center mb-8 p-6 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-lg border-2 border-blue-400">
+                <h3 class="text-lg font-bold mb-3 text-blue-900 dark:text-blue-300">❤️ Supporting Children's Miracle Network Hospitals</h3>
+                <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
+                    <strong>100% of ad revenue from this mobile app goes directly to Extra Life</strong>, a fundraising program of Children's Miracle Network Hospitals.
+                </p>
+                <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">
+                    Extra Life unites thousands of gamers around the world to play games in support of their local children's hospital. Since 2008, Extra Life has raised more than $80 million for sick and injured kids.
+                </p>
+                <a href="https://www.extra-life.org/" target="_blank" rel="noopener noreferrer" class="inline-block px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-semibold transition-colors">
+                    Learn More About Extra Life
+                </a>
+            </div>
+
+            <div class="text-center text-xs text-gray-600 dark:text-gray-400 space-y-3">
+                <p class="font-semibold text-sm">Legal Notice & Disclaimers</p>
+
+                <p>This application is an independent, unofficial tool and is NOT affiliated with, endorsed by, sponsored by, or officially connected to Wizards of the Coast, Hasbro, Dungeons & Dragons, or any of their subsidiaries or affiliates.</p>
+
+                <p>All creature statistics and game mechanics are sourced from the Systems Reference Document (SRD) 5.1, which is released under the Open Game License v 1.0a (OGL). This application is provided under the same license.</p>
+
+                <p class="font-semibold">Dungeons & Dragons, 5e, and their respective logos are trademarks of Wizards of the Coast LLC in the U.S.A. and other countries. © 1993-2025 Wizards of the Coast LLC, a subsidiary of Hasbro, Inc. All Rights Reserved.</p>
+
+                <p>This application is provided "AS IS" without warranty of any kind, express or implied. The creators of this application assume no responsibility or liability for the accuracy, completeness, or usefulness of any information provided.</p>
+
+                <p class="mt-4"><a href="https://media.wizards.com/2016/downloads/DND/SRD-OGL_V5.1.pdf" target="_blank" rel="noopener noreferrer" class="text-[#5D5CDE] hover:underline">View Open Game License (OGL 1.0a)</a></p>
+
+                <div class="mt-6 pt-4 border-t border-gray-400 dark:border-gray-600">
+                    <p class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Application Created by NamuNinja</p>
+                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-1"><strong>App Code & Design:</strong> Copyright © 2025 NamuNinja</p>
+                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-2"><strong>Game Content (Creatures/Spells):</strong> © 1993-2025 Wizards of the Coast LLC, a subsidiary of Hasbro, Inc. All Rights Reserved. Licensed under OGL 1.0a</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 italic">The copyright applies only to the original application code, user interface design, and implementation. All creature statistics, spell descriptions, and game mechanics are Open Game Content from the SRD 5.1 and remain the property of Wizards of the Coast LLC.</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-2">Export Compliance: EAR §740.17 - Mass Market Encryption Exemption</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-2">🔒 Privacy: This app collects no personal information. All data is stored locally on your device. Ads are served by Google AdMob using family-safe, non-personalized advertising.</p>
+                </div>
+
+                <p class="mt-4 text-gray-500 dark:text-gray-500">v1.3.9 • 100% Offline • OGL 1.0a Compliant • 322 SRD Creatures • 335 Spells • Action Indicators • Conditions • Ad Revenue→Extra Life</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Creature Detail Modal -->
+    <div id="creatureModal" class="modal fixed inset-0 bg-black bg-opacity-75 items-center justify-center z-50 p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto relative shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-3xl font-bold z-10">&times;</button>
+            <div id="modalContent" class="p-8"></div>
+        </div>
+    </div>
+
+    <!-- Creature Form Modal -->
+    <div id="creatureFormModal" class="modal fixed inset-0 bg-black bg-opacity-75 items-center justify-center z-50 p-4 overflow-y-auto">
+        <div class="bg-white dark:bg-gray-800 rounded-lg max-w-5xl w-full max-h-[90vh] overflow-y-auto relative shadow-2xl my-8">
+            <div class="sticky top-0 bg-white dark:bg-gray-800 border-b dark:border-gray-700 px-8 py-4 flex justify-between items-center z-10">
+                <h2 class="text-2xl font-bold text-[#8b5cf6]" id="formTitle">Add Custom Creature</h2>
+                <button onclick="closeCreatureForm()" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-3xl font-bold">&times;</button>
+            </div>
+            <div class="p-8">
+                <form id="creatureForm" class="space-y-6">
+                    <input type="hidden" id="editingCreatureId" value="">
+
+                    <!-- Basic Information -->
+                    <div class="border-b dark:border-gray-700 pb-4">
+                        <h3 class="text-lg font-bold mb-4 text-[#8b5cf6]">Basic Information</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Name *</label>
+                                <input type="text" id="creatureName" required class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Type *</label>
+                                <input type="text" id="creatureType" required class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="e.g., beast, humanoid">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">CR *</label>
+                                <input type="text" id="creatureCR" required class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="e.g., 5">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">AC *</label>
+                                <input type="text" id="creatureAC" required class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="e.g., 15">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-medium mb-1">HP *</label>
+                                <input type="text" id="creatureHP" required class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="e.g., 58 (9d8 + 18)">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Size</label>
+                                <select id="creatureSize" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]">
+                                    <option value="">—</option>
+                                    <option>Tiny</option>
+                                    <option>Small</option>
+                                    <option>Medium</option>
+                                    <option>Large</option>
+                                    <option>Huge</option>
+                                    <option>Gargantuan</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Alignment</label>
+                                <input type="text" id="creatureAlignment" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="e.g., neutral evil">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Speed</label>
+                                <input type="text" id="creatureSpeed" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="e.g., 30 ft., fly 60 ft.">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ability Scores -->
+                    <div class="border-b dark:border-gray-700 pb-4">
+                        <h3 class="text-lg font-bold mb-4 text-[#8b5cf6]">Ability Scores</h3>
+                        <div class="grid grid-cols-3 md:grid-cols-6 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">STR</label>
+                                <input type="number" id="creatureStr" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="10">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">DEX</label>
+                                <input type="number" id="creatureDex" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="10">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">CON</label>
+                                <input type="number" id="creatureCon" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="10">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">INT</label>
+                                <input type="number" id="creatureInt" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="10">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">WIS</label>
+                                <input type="number" id="creatureWis" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="10">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">CHA</label>
+                                <input type="number" id="creatureCha" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="10">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Defensive Stats -->
+                    <div class="border-b dark:border-gray-700 pb-4">
+                        <h3 class="text-lg font-bold mb-4 text-[#8b5cf6]">Defensive Stats & Proficiencies</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Saving Throws</label>
+                                <input type="text" id="creatureSaves" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="e.g., Dex +5, Con +4">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Skills</label>
+                                <input type="text" id="creatureSkills" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="e.g., Perception +6, Stealth +8">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Damage Vulnerabilities</label>
+                                <input type="text" id="creatureDmgVuln" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="e.g., fire">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Damage Resistances</label>
+                                <input type="text" id="creatureDmgRes" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="e.g., cold, lightning">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Damage Immunities</label>
+                                <input type="text" id="creatureDmgImm" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="e.g., poison, psychic">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Condition Immunities</label>
+                                <input type="text" id="creatureCondImm" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="e.g., charmed, frightened">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Senses</label>
+                                <input type="text" id="creatureSenses" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="e.g., darkvision 60 ft., passive Perception 14">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Languages</label>
+                                <input type="text" id="creatureLanguages" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="e.g., Common, Draconic">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Special Abilities & Traits -->
+                    <div class="border-b dark:border-gray-700 pb-4">
+                        <h3 class="text-lg font-bold mb-4 text-[#8b5cf6]">Special Abilities & Traits</h3>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium mb-1">Description/Notes</label>
+                            <textarea id="creatureDescription" rows="2" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="Optional flavor text or lore..."></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium mb-1">Special Abilities (one per line)</label>
+                            <textarea id="creatureSpecialAbilities" rows="4" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="Spellcasting: The creature is a 5th-level spellcaster...&#10;Magic Resistance: The creature has advantage on saving throws against spells."></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Traits (one per line)</label>
+                            <textarea id="creatureTraits" rows="3" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="Keen Smell: The creature has advantage on Wisdom (Perception) checks that rely on smell."></textarea>
+                        </div>
+                        <div class="mt-4">
+                            <label class="block text-sm font-medium mb-2">Spellcasting</label>
+
+                            <!-- Browse Spells Button -->
+                            <button type="button" onclick="openSpellSelector()" class="mb-3 px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-lg text-sm font-medium flex items-center gap-2 shadow-md transition">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                </svg>
+                                ✨ Browse & Auto-Fill Spells
+                            </button>
+
+                            <!-- Auto-Calculate Spellcasting Stats -->
+                            <div class="mb-3 p-3 bg-blue-50 dark:bg-blue-900/10 rounded-lg border border-blue-200 dark:border-blue-700">
+                                <div class="text-xs font-bold text-blue-700 dark:text-blue-300 mb-2">🧮 Auto-Calculate Spellcasting Stats</div>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mb-2">
+                                    <div>
+                                        <label class="block text-xs font-medium mb-1">Caster Level</label>
+                                        <input type="number" id="casterLevel" min="1" max="20" class="w-full px-2 py-1 text-sm border border-blue-300 dark:border-blue-600 rounded bg-white dark:bg-gray-700" placeholder="e.g., 5">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-medium mb-1">Spellcasting Ability</label>
+                                        <select id="spellcastingAbility" class="w-full px-2 py-1 text-sm border border-blue-300 dark:border-blue-600 rounded bg-white dark:bg-gray-700">
+                                            <option value="">Select...</option>
+                                            <option value="Intelligence">Intelligence</option>
+                                            <option value="Wisdom">Wisdom</option>
+                                            <option value="Charisma">Charisma</option>
+                                        </select>
+                                    </div>
+                                    <div class="flex items-end">
+                                        <button type="button" onclick="autoFillSpellcastingDescription()" class="w-full px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white rounded text-xs font-medium">
+                                            ✨ Auto-Fill Description
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400 italic">
+                                    💡 Fill in caster level and ability above, then click to auto-generate the description
+                                </div>
+                            </div>
+
+                            <!-- Spellcasting Header/Description -->
+                            <div class="mb-3">
+                                <label class="block text-xs font-medium mb-1 text-gray-600 dark:text-gray-400">Spellcasting Description</label>
+                                <textarea id="spellcastingHeader" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="The creature is a 5th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 13, +5 to hit with spell attacks)."></textarea>
+                            </div>
+
+                            <!-- Organized Spell Level Fields -->
+                            <div class="space-y-2 bg-purple-50 dark:bg-purple-900/10 p-3 rounded-lg border border-purple-200 dark:border-purple-700">
+                                <div class="text-xs font-bold text-purple-700 dark:text-purple-300 mb-2">📜 Spell List (auto-populated from Browse Spells)</div>
+
+                                <!-- Cantrips -->
+                                <div>
+                                    <label class="block text-xs font-semibold mb-1 text-gray-700 dark:text-gray-300">Cantrips (at will)</label>
+                                    <input type="text" id="spellCantrips" class="w-full px-3 py-2 text-sm border border-purple-300 dark:border-purple-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="e.g., Fire Bolt, Mage Hand, Prestidigitation">
+                                </div>
+
+                                <!-- 1st Level -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                    <div>
+                                        <label class="block text-xs font-semibold mb-1 text-gray-700 dark:text-gray-300">1st Level Spells</label>
+                                        <input type="text" id="spell1st" class="w-full px-3 py-2 text-sm border border-purple-300 dark:border-purple-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="e.g., Shield, Magic Missile">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold mb-1 text-gray-700 dark:text-gray-300">Slots</label>
+                                        <input type="number" id="spell1stSlots" min="0" class="w-full px-3 py-2 text-sm border border-purple-300 dark:border-purple-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="e.g., 4">
+                                    </div>
+                                </div>
+
+                                <!-- 2nd Level -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                    <div>
+                                        <label class="block text-xs font-semibold mb-1 text-gray-700 dark:text-gray-300">2nd Level Spells</label>
+                                        <input type="text" id="spell2nd" class="w-full px-3 py-2 text-sm border border-purple-300 dark:border-purple-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="e.g., Misty Step, Blur">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold mb-1 text-gray-700 dark:text-gray-300">Slots</label>
+                                        <input type="number" id="spell2ndSlots" min="0" class="w-full px-3 py-2 text-sm border border-purple-300 dark:border-purple-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="e.g., 3">
+                                    </div>
+                                </div>
+
+                                <!-- 3rd Level -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                    <div>
+                                        <label class="block text-xs font-semibold mb-1 text-gray-700 dark:text-gray-300">3rd Level Spells</label>
+                                        <input type="text" id="spell3rd" class="w-full px-3 py-2 text-sm border border-purple-300 dark:border-purple-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="e.g., Fireball, Counterspell">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold mb-1 text-gray-700 dark:text-gray-300">Slots</label>
+                                        <input type="number" id="spell3rdSlots" min="0" class="w-full px-3 py-2 text-sm border border-purple-300 dark:border-purple-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="e.g., 3">
+                                    </div>
+                                </div>
+
+                                <!-- 4th Level -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                    <div>
+                                        <label class="block text-xs font-semibold mb-1 text-gray-700 dark:text-gray-300">4th Level Spells</label>
+                                        <input type="text" id="spell4th" class="w-full px-3 py-2 text-sm border border-purple-300 dark:border-purple-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="e.g., Dimension Door">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold mb-1 text-gray-700 dark:text-gray-300">Slots</label>
+                                        <input type="number" id="spell4thSlots" min="0" class="w-full px-3 py-2 text-sm border border-purple-300 dark:border-purple-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="e.g., 3">
+                                    </div>
+                                </div>
+
+                                <!-- 5th Level -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                    <div>
+                                        <label class="block text-xs font-semibold mb-1 text-gray-700 dark:text-gray-300">5th Level Spells</label>
+                                        <input type="text" id="spell5th" class="w-full px-3 py-2 text-sm border border-purple-300 dark:border-purple-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="e.g., Cone of Cold">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold mb-1 text-gray-700 dark:text-gray-300">Slots</label>
+                                        <input type="number" id="spell5thSlots" min="0" class="w-full px-3 py-2 text-sm border border-purple-300 dark:border-purple-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="e.g., 2">
+                                    </div>
+                                </div>
+
+                                <!-- 6th Level -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                    <div>
+                                        <label class="block text-xs font-semibold mb-1 text-gray-700 dark:text-gray-300">6th Level Spells</label>
+                                        <input type="text" id="spell6th" class="w-full px-3 py-2 text-sm border border-purple-300 dark:border-purple-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="e.g., Chain Lightning">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold mb-1 text-gray-700 dark:text-gray-300">Slots</label>
+                                        <input type="number" id="spell6thSlots" min="0" class="w-full px-3 py-2 text-sm border border-purple-300 dark:border-purple-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="e.g., 1">
+                                    </div>
+                                </div>
+
+                                <!-- 7th Level -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                    <div>
+                                        <label class="block text-xs font-semibold mb-1 text-gray-700 dark:text-gray-300">7th Level Spells</label>
+                                        <input type="text" id="spell7th" class="w-full px-3 py-2 text-sm border border-purple-300 dark:border-purple-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="e.g., Teleport">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold mb-1 text-gray-700 dark:text-gray-300">Slots</label>
+                                        <input type="number" id="spell7thSlots" min="0" class="w-full px-3 py-2 text-sm border border-purple-300 dark:border-purple-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="e.g., 1">
+                                    </div>
+                                </div>
+
+                                <!-- 8th Level -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                    <div>
+                                        <label class="block text-xs font-semibold mb-1 text-gray-700 dark:text-gray-300">8th Level Spells</label>
+                                        <input type="text" id="spell8th" class="w-full px-3 py-2 text-sm border border-purple-300 dark:border-purple-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="e.g., Power Word Stun">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold mb-1 text-gray-700 dark:text-gray-300">Slots</label>
+                                        <input type="number" id="spell8thSlots" min="0" class="w-full px-3 py-2 text-sm border border-purple-300 dark:border-purple-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="e.g., 1">
+                                    </div>
+                                </div>
+
+                                <!-- 9th Level -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                    <div>
+                                        <label class="block text-xs font-semibold mb-1 text-gray-700 dark:text-gray-300">9th Level Spells</label>
+                                        <input type="text" id="spell9th" class="w-full px-3 py-2 text-sm border border-purple-300 dark:border-purple-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="e.g., Wish, Meteor Swarm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold mb-1 text-gray-700 dark:text-gray-300">Slots</label>
+                                        <input type="number" id="spell9thSlots" min="0" class="w-full px-3 py-2 text-sm border border-purple-300 dark:border-purple-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="e.g., 1">
+                                    </div>
+                                </div>
+
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mt-2 italic">
+                                    💡 Tip: Click "Browse & Auto-Fill Spells" to automatically populate spell names into the correct level fields!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="border-b dark:border-gray-700 pb-4">
+                        <h3 class="text-lg font-bold mb-4 text-[#8b5cf6]">Combat Actions</h3>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium mb-1">Actions (one per line)</label>
+                            <textarea id="creatureActions" rows="4" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="Multiattack: The creature makes two attacks.&#10;Bite: Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 3) piercing damage."></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium mb-1">Bonus Actions (one per line)</label>
+                            <textarea id="creatureBonusActions" rows="3" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="Nimble Escape: The creature can take the Disengage or Hide action as a bonus action."></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Reactions (one per line)</label>
+                            <textarea id="creatureReactions" rows="3" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="Parry: The creature adds 2 to its AC against one melee attack that would hit it."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Legendary Features -->
+                    <div class="border-b dark:border-gray-700 pb-4">
+                        <h3 class="text-lg font-bold mb-4 text-[#8b5cf6]">Legendary Features</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Legendary Resistance (per day)</label>
+                                <input type="number" id="creatureLegendaryResistance" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="e.g., 3" min="0">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Legendary Action Count</label>
+                                <input type="number" id="creatureLegendaryActionCount" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="e.g., 3" min="0">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Legendary Actions (one per line)</label>
+                            <textarea id="creatureLegendaryActions" rows="4" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]" placeholder="Detect: The creature makes a Wisdom (Perception) check.&#10;Tail Attack (Costs 2 Actions): The creature makes a tail attack."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Import/Export (NEW v1.2.6) -->
+                    <div class="flex flex-wrap gap-2 pt-4 border-t dark:border-gray-700 mb-4">
+                        <button type="button" onclick="exportCreature()" class="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg text-sm flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                            </svg>
+                            Export Current
+                        </button>
+                        <button type="button" onclick="importCreature()" class="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg text-sm flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                            </svg>
+                            Import from JSON
+                        </button>
+                    </div>
+
+                    <div class="flex justify-end gap-3 pt-4 border-t dark:border-gray-700">
+                        <button type="button" onclick="closeCreatureForm()" class="px-6 py-2 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Cancel</button>
+                        <button type="submit" class="px-6 py-2 bg-[#8b5cf6] hover:bg-[#7c3aed] text-white rounded-lg">Save Creature</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Spell Selector Modal (NEW v1.2.6) -->
+    <div id="spellSelectorModal" class="modal fixed inset-0 bg-black bg-opacity-75 items-center justify-center z-50 p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden relative shadow-2xl flex flex-col">
+            <div class="p-6 border-b dark:border-gray-700">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Spell Selector</h2>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                    Click spells to select • <span id="selectedSpellCount" class="font-bold text-purple-600 dark:text-purple-400">0</span> selected
+                </p>
+                <button onclick="closeSpellSelector()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-3xl font-bold">&times;</button>
+            </div>
+            <div class="p-6 overflow-y-auto flex-1">
+                <div class="mb-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <input type="text" id="spellSearchInput" placeholder="Search spells..." class="px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white" onkeyup="filterSpells()">
+                    <select id="spellLevelFilter" class="px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white" onchange="filterSpells()">
+                        <option value="">All Levels</option>
+                        <option value="0">Cantrip</option>
+                        <option value="1">1st Level</option>
+                        <option value="2">2nd Level</option>
+                        <option value="3">3rd Level</option>
+                        <option value="4">4th Level</option>
+                        <option value="5">5th Level</option>
+                        <option value="6">6th Level</option>
+                        <option value="7">7th Level</option>
+                        <option value="8">8th Level</option>
+                        <option value="9">9th Level</option>
+                    </select>
+                    <select id="spellSchoolFilter" class="px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white" onchange="filterSpells()">
+                        <option value="">All Schools</option>
+                        <option value="abjuration">Abjuration</option>
+                        <option value="conjuration">Conjuration</option>
+                        <option value="divination">Divination</option>
+                        <option value="enchantment">Enchantment</option>
+                        <option value="evocation">Evocation</option>
+                        <option value="illusion">Illusion</option>
+                        <option value="necromancy">Necromancy</option>
+                        <option value="transmutation">Transmutation</option>
+                    </select>
+                </div>
+                <div id="spellList" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+            </div>
+            <div class="p-4 border-t dark:border-gray-700 bg-gray-50 dark:bg-gray-900 flex justify-between items-center gap-4">
+                <button onclick="clearAllSpellSelections()" class="px-4 py-2 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition">
+                    Clear All
+                </button>
+                <button id="addSelectedSpellsBtn" onclick="addSelectedSpells()" class="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-bold transition disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                    Add <span id="selectedSpellCount2" class="font-bold">0</span> Selected Spell(s)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Spell Detail Modal -->
+    <div id="spellModal" class="modal fixed inset-0 bg-black bg-opacity-75 items-center justify-center z-50 p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto relative shadow-2xl">
+            <button onclick="closeSpellModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-3xl font-bold z-10">&times;</button>
+            <div id="spellModalContent" class="p-8"></div>
+        </div>
+    </div>
+
+    <!-- Conditions Reference Modal -->
+    <div id="conditionsModal" class="modal fixed inset-0 bg-black bg-opacity-75 items-center justify-center z-50 p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto relative shadow-2xl">
+            <button onclick="closeConditions()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-3xl font-bold z-10">&times;</button>
+            <div id="conditionsModalContent" class="p-8"></div>
+        </div>
+    </div>
+
+    <!-- Import/Export ALL Creatures Modal (NEW v1.2.6) -->
+    <div id="importExportModal" class="modal fixed inset-0 bg-black bg-opacity-75 items-center justify-center z-50 p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-lg max-w-md w-full shadow-2xl">
+            <div class="p-6 border-b dark:border-gray-700">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Import/Export Custom Creatures</h2>
+                <button onclick="closeImportExportModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-3xl font-bold">&times;</button>
+            </div>
+            <div class="p-6 space-y-4">
+                <p class="text-gray-600 dark:text-gray-400">Choose an action for all custom creatures:</p>
+
+                <!-- Export All Button -->
+                <button onclick="exportAllCustomCreatures()" class="w-full px-6 py-4 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium transition flex items-center justify-center gap-3 text-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                    </svg>
+                    Export All Custom Creatures
+                </button>
+                <p class="text-xs text-gray-500 dark:text-gray-400 text-center">Download all your custom creatures as a single JSON file</p>
+
+                <!-- Import All Button -->
+                <button onclick="importAllCustomCreatures()" class="w-full px-6 py-4 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-medium transition flex items-center justify-center gap-3 text-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                    </svg>
+                    Import Custom Creatures
+                </button>
+                <p class="text-xs text-gray-500 dark:text-gray-400 text-center">Load custom creatures from a JSON file (will merge with existing)</p>
+            </div>
+            <div class="p-6 bg-gray-50 dark:bg-gray-900 rounded-b-lg">
+                <p class="text-xs text-gray-500 dark:text-gray-400 text-center">
+                    <strong>Note:</strong> This feature manages all custom creatures you've created. SRD creatures are not affected.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="spells_srd.js"></script>
+    <script src="additional-spells-srd.js"></script>
+    <script src="creatures_embed.js"></script>
+    <script>
+        // ===== DIAGNOSTIC CHECKS (v1.2.6) =====
+        console.log('═══════════════════════════════════════════════');
+        console.log('🔍 5th Edition Creature Codex v1.3.9 (versioncode 7) - FIXED: Custom creature spells not displaying');
+        console.log('═══════════════════════════════════════════════');
+
+        // Check if scripts loaded
+        if (typeof window.spellsData !== 'undefined') {
+            const spellCount = Object.keys(window.spellsData).length;
+            console.log('✅ spellsData loaded:', spellCount, 'spells');
+            if (spellCount < 300) {
+                console.warn('⚠️ WARNING: Expected 335 spells but found', spellCount, '- additional-spells-srd.js may not have loaded!');
+            }
+        } else {
+            console.error('❌ CRITICAL: spellsData NOT loaded! Check if spells_srd.js exists and is in the same folder.');
+        }
+
+        if (typeof window.creaturesData !== 'undefined') {
+            const creatureCount = Object.keys(window.creaturesData).length;
+            console.log('✅ creaturesData loaded:', creatureCount, 'creatures (expected: 322)');
+        } else {
+            console.error('❌ CRITICAL: creaturesData NOT loaded! Check if creatures_embed.js exists and is in the same folder.');
+        }
+
+        console.log('═══════════════════════════════════════════════');
+
+        // Initialize data
+        let allCreatures = {};
+        let customCreatures = {};
+        let currentFilters = {
+            search: '',
+            type: '',
+            source: '',
+            cr: 'all'
+        };
+
+        // Safe storage wrapper
+        function getStorage() {
+            try {
+                return window.localStorage || window.sessionStorage || null;
+            } catch (e) {
+                return null;
+            }
+        }
+
+        // Load custom creatures from localStorage
+        function loadCustomCreatures() {
+            const storage = getStorage();
+            if (!storage) return;
+
+            const stored = storage.getItem('customCreatures');
+            if (stored) {
+                try {
+                    customCreatures = JSON.parse(stored);
+                } catch (e) {
+                    console.error('Error loading custom creatures:', e);
+                    customCreatures = {};
+                }
+            }
+        }
+
+        // Save custom creatures to localStorage
+        function saveCustomCreatures() {
+            const storage = getStorage();
+            if (!storage) {
+                console.warn('Storage not available');
+                return;
+            }
+            storage.setItem('customCreatures', JSON.stringify(customCreatures));
+        }
+
+        // Merge SRD and custom creatures
+        function getAllCreatures() {
+            // Check if creaturesData is defined
+            if (typeof creaturesData === 'undefined') {
+                console.error('creaturesData is not defined. Make sure creatures_embed.js is loaded.');
+                return { ...customCreatures };
+            }
+            return { ...creaturesData, ...customCreatures };
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Verify creaturesData is loaded
+            if (typeof creaturesData === 'undefined') {
+                console.error('FATAL: creaturesData not loaded. Check that creatures_embed.js is included.');
+                document.getElementById('creaturesGrid').innerHTML = '<div class="col-span-full text-center text-red-600 p-8"><h3 class="text-xl font-bold mb-2">Error Loading Creatures</h3><p>The creature database failed to load. Please refresh the page or check the console for errors.</p></div>';
+                return;
+            }
+
+            loadCustomCreatures();
+            allCreatures = getAllCreatures();
+
+            // Dark mode detection
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.classList.add('dark');
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+                if (event.matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            });
+
+            populateFilters();
+            renderCreatures();
+            updateCounts();
+
+            // Initialize Battle Tabs (v1.2.6)
+            if (typeof battleTabsManager !== 'undefined' && battleTabsManager) {
+                console.log('🎮 Rendering Battle Tabs UI...');
+                battleTabsManager.renderBattleTabsUI();
+            } else {
+                console.log('⏳ Battle tabs manager not ready yet, will initialize on script load');
+            }
+
+            // Event listeners
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                currentFilters.search = e.target.value.toLowerCase();
+                renderCreatures();
+            });
+
+            document.getElementById('typeFilter').addEventListener('change', (e) => {
+                currentFilters.type = e.target.value;
+                renderCreatures();
+            });
+
+            document.getElementById('sourceFilter').addEventListener('change', (e) => {
+                currentFilters.source = e.target.value;
+                renderCreatures();
+            });
+
+            document.getElementById('creatureForm').addEventListener('submit', handleFormSubmit);
+        });
+
+        // Update counts
+        function updateCounts() {
+            const srdCount = (typeof creaturesData !== 'undefined') ? Object.keys(creaturesData).length : 0;
+            const customCount = Object.keys(customCreatures).length;
+            const total = srdCount + customCount;
+
+            document.getElementById('totalCreatures').textContent = total;
+            document.getElementById('srdCount').textContent = srdCount;
+            document.getElementById('customCount').textContent = customCount;
+        }
+
+        // Populate type filter
+        function populateFilters() {
+            const types = new Set();
+            Object.values(allCreatures).forEach(creature => {
+                if (creature.type) types.add(creature.type);
+            });
+
+            const typeFilter = document.getElementById('typeFilter');
+            typeFilter.innerHTML = '<option value="">All Types</option>';
+            Array.from(types).sort().forEach(type => {
+                const option = document.createElement('option');
+                option.value = type;
+                option.textContent = type.charAt(0).toUpperCase() + type.slice(1);
+                typeFilter.appendChild(option);
+            });
+        }
+
+        // Filter by CR
+        function filterCR(range) {
+            currentFilters.cr = range;
+
+            // Update button states
+            document.querySelectorAll('.cr-filter').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            renderCreatures();
+        }
+
+        // Check if creature matches CR range
+        function matchesCR(cr, range) {
+            if (range === 'all') return true;
+
+            const crValue = parseFloat(cr) || 0;
+
+            switch(range) {
+                case '0-0.5': return crValue <= 0.5;
+                case '1-4': return crValue >= 1 && crValue <= 4;
+                case '5-10': return crValue >= 5 && crValue <= 10;
+                case '11-15': return crValue >= 11 && crValue <= 15;
+                case '16-20': return crValue >= 16 && crValue <= 20;
+                case '21+': return crValue >= 21;
+                default: return true;
+            }
+        }
+
+        // Render creatures grid
+        function renderCreatures() {
+            const grid = document.getElementById('creaturesGrid');
+            const noResults = document.getElementById('noResults');
+            grid.innerHTML = '';
+
+            const filtered = Object.entries(allCreatures).filter(([name, creature]) => {
+                // Search filter
+                if (currentFilters.search && !name.toLowerCase().includes(currentFilters.search)) {
+                    return false;
+                }
+
+                // Type filter
+                if (currentFilters.type && creature.type !== currentFilters.type) {
+                    return false;
+                }
+
+                // Source filter
+                if (currentFilters.source) {
+                    const isCustom = customCreatures.hasOwnProperty(name);
+                    if (currentFilters.source === 'SRD' && isCustom) return false;
+                    if (currentFilters.source === 'custom' && !isCustom) return false;
+                }
+
+                // CR filter
+                if (!matchesCR(creature.cr, currentFilters.cr)) {
+                    return false;
+                }
+
+                return true;
+            });
+
+            document.getElementById('resultCount').textContent = filtered.length;
+
+            if (filtered.length === 0) {
+                noResults.classList.remove('hidden');
+                return;
+            }
+
+            noResults.classList.add('hidden');
+
+            filtered.sort((a, b) => a[0].localeCompare(b[0])).forEach(([name, creature]) => {
+                const isCustom = customCreatures.hasOwnProperty(name);
+                console.log('Creating card for:', name, 'isCustom:', isCustom, 'creature:', creature);
+                const card = createCreatureCard(name, creature, isCustom);
+                grid.appendChild(card);
+            });
+        }
+
+        // Create creature card
+        function createCreatureCard(name, creature, isCustom) {
+            const card = document.createElement('div');
+            card.className = 'creature-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 cursor-pointer border-2 border-transparent hover:border-[#5D5CDE]';
+
+            // Store creature data as attributes for click handling
+            card.setAttribute('data-creature-name', name);
+            card.setAttribute('data-is-custom', isCustom ? 'true' : 'false');
+
+            const badgeHtml = isCustom
+                ? '<span class="badge badge-custom">CUSTOM</span>'
+                : '<span class="badge badge-srd">SRD</span>';
+
+            const legendaryBadge = creature.legendary_actions?.length
+                ? '<span class="legendary-badge">⚡ LEGENDARY</span>'
+                : '';
+
+            card.innerHTML = `
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-lg font-bold text-[#5D5CDE]">${name}${badgeHtml}</h3>
+                    ${legendaryBadge}
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                    ${creature.size ? creature.size + ' ' : ''}${creature.type || 'Unknown'} • CR ${creature.cr || '—'}
+                </p>
+                <div class="text-sm space-y-1">
+                    <div><span class="font-semibold">AC:</span> ${creature.ac || '—'}</div>
+                    <div><span class="font-semibold">HP:</span> ${creature.hp || '—'}</div>
+                </div>
+            `;
+
+            // Use addEventListener instead of onclick - more reliable
+            card.addEventListener('click', function(e) {
+                console.log('✅ Card click event fired for:', name, 'isCustom:', isCustom);
+                e.preventDefault();
+                e.stopPropagation();
+
+                // Get fresh creature data from storage
+                const allCreatures = getAllCreatures();
+                const currentCreature = allCreatures[name];
+
+                if (!currentCreature) {
+                    console.error('❌ Creature not found:', name);
+                    return;
+                }
+
+                console.log('📦 Creature data:', currentCreature);
+                showCreatureDetails(name, currentCreature, isCustom);
+            }, { passive: false });
+
+            console.log('🎯 Event listener attached to card:', name);
+
+            return card;
+        }
+
+        // Show creature details
+        function showCreatureDetails(name, creature, isCustom) {
+            try {
+                console.log('🎬 showCreatureDetails STARTED');
+                console.log('📝 Parameters:', {name: name, isCustom: isCustom, creature: creature});
+
+                console.log('🔍 Step 1: Getting modal element...');
+                const modal = document.getElementById('creatureModal');
+                if (!modal) {
+                    console.error('❌ CRITICAL: Modal element not found!');
+                    console.error('❌ Cannot open creature details - modal DOM element is missing');
+                    return;
+                }
+                console.log('✅ Modal element found');
+
+                console.log('🔍 Step 2: Getting content element...');
+                const content = document.getElementById('modalContent');
+                if (!content) {
+                    console.error('❌ CRITICAL: Modal content element not found!');
+                    console.error('❌ Cannot open creature details - modalContent DOM element is missing');
+                    return;
+                }
+                console.log('✅ Content element found');
+
+                console.log('🔍 Step 3: Building button HTML for isCustom=' + isCustom + '...');
+
+            const editDeleteButtons = isCustom ? `
+                <div class="flex gap-2 mb-4">
+                    <button onclick="event.stopPropagation(); editCreature('${name.replace(/'/g, "\\'")}'); return false;" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">
+                        Edit
+                    </button>
+                    <button onclick="event.stopPropagation(); deleteCreature('${name.replace(/'/g, "\\'")}'); return false;" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg">
+                        Delete
+                    </button>
+                    <button onclick="event.stopPropagation(); addCreatureToBattleTab('${name.replace(/'/g, "\\'")}'); return false;" class="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg">
+                        ⚔️ Add to Battle
+                    </button>
+                </div>
+            ` : `
+                <div class="flex gap-2 mb-4">
+                    <button onclick="event.stopPropagation(); addCreatureToBattleTab('${name.replace(/'/g, "\\'")}'); return false;" class="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg">
+                        ⚔️ Add to Battle Tab
+                    </button>
+                </div>
+            `;
+
+            const badgeHtml = isCustom
+                ? '<span class="badge badge-custom">CUSTOM</span>'
+                : '<span class="badge badge-srd">OFFICIAL SRD</span>';
+
+            let html = `
+                <h2 class="text-3xl font-bold mb-2 text-[#5D5CDE]">${name}${badgeHtml}</h2>
+                ${editDeleteButtons}
+                <div class="border-b dark:border-gray-700 pb-4 mb-4">
+                    <p class="text-lg italic">${creature.size ? creature.size + ' ' : ''}${creature.type || 'unknown'}${creature.alignment ? ', ' + creature.alignment : ''}</p>
+                </div>
+
+                ${createActionLegend()}
+
+                <div class="space-y-2 mb-4">
+                    <p><strong class="text-red-600 dark:text-red-400">Armor Class</strong> ${creature.ac || '—'}</p>
+                    <p><strong class="text-red-600 dark:text-red-400">Hit Points</strong> ${creature.hp || '—'}</p>
+                    <p><strong class="text-red-600 dark:text-red-400">Speed</strong> ${creature.speed || '—'}</p>
+                    <p><strong class="text-red-600 dark:text-red-400">Challenge</strong> ${creature.cr || '—'}${creature.xp ? ' (' + creature.xp + ' XP)' : ''}</p>
+                </div>
+
+                <!-- HP Tracker (NEW v1.2.6) -->
+                ${window.hpTracker ? window.hpTracker.renderHPTracker(name, creature.hp || '0') : ''}
+
+                <!-- Add to Battle Tab Button (NEW v1.2.6) -->
+                ${window.battleTabsManager ? `
+                <div class="mb-4">
+                    <button
+                        onclick="battleTabsManager.showAddToTabModal('${name}')"
+                        class="w-full px-4 py-3 bg-purple-500 hover:bg-purple-600 text-white rounded-lg font-medium transition flex items-center justify-center gap-2"
+                    >
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                        Add to Battle Tab
+                    </button>
+                </div>
+                ` : ''}
+            `;
+
+            // Ability Scores
+            if (creature.stats || creature.str !== undefined) {
+                html += '<div class="mb-4 border dark:border-gray-700 rounded-lg p-3">';
+                html += '<div class="grid grid-cols-6 gap-2 text-center text-sm">';
+
+                const stats = creature.stats || creature;
+                const abilities = [
+                    {label: 'STR', value: stats.str},
+                    {label: 'DEX', value: stats.dex},
+                    {label: 'CON', value: stats.con},
+                    {label: 'INT', value: stats.int},
+                    {label: 'WIS', value: stats.wis},
+                    {label: 'CHA', value: stats.cha}
+                ];
+
+                abilities.forEach(ability => {
+                    const score = ability.value !== undefined ? ability.value : '—';
+                    const modifier = ability.value !== undefined ? Math.floor((ability.value - 10) / 2) : '';
+                    const modStr = modifier !== '' ? (modifier >= 0 ? `+${modifier}` : modifier) : '';
+
+                    html += `
+                        <div>
+                            <div class="font-bold text-red-600 dark:text-red-400">${ability.label}</div>
+                            <div class="font-semibold">${score}</div>
+                            ${modStr ? `<div class="text-xs text-gray-600 dark:text-gray-400">(${modStr})</div>` : ''}
+                        </div>
+                    `;
+                });
+
+                html += '</div></div>';
+            }
+
+            // Saving Throws
+            if (creature.saves && typeof creature.saves === 'object' && Object.keys(creature.saves).length > 0) {
+                html += '<div class="mb-4"><p><strong class="text-red-600 dark:text-red-400">Saving Throws:</strong> ';
+                const saves = [];
+                for (const [key, value] of Object.entries(creature.saves)) {
+                    saves.push(`${key.toUpperCase()} +${value}`);
+                }
+                html += saves.join(', ') + '</p></div>';
+            }
+
+            // Skills
+            if (creature.skills) {
+                // Handle both object format and string format
+                if (typeof creature.skills === 'string') {
+                    // Skills stored as string (e.g., "Deception +9, Insight +5")
+                    html += `<div class="mb-4"><p><strong class="text-red-600 dark:text-red-400">Skills:</strong> ${creature.skills}</p></div>`;
+                } else if (creature.skills && typeof creature.skills === 'object' && Object.keys(creature.skills).length > 0) {
+                    // Skills stored as object
+                    html += '<div class="mb-4"><p><strong class="text-red-600 dark:text-red-400">Skills:</strong> ';
+                    const skills = [];
+                    for (const [key, value] of Object.entries(creature.skills)) {
+                        const skillName = key.charAt(0).toUpperCase() + key.slice(1);
+                        skills.push(`${skillName} +${value}`);
+                    }
+                    html += skills.join(', ') + '</p></div>';
+                }
+            }
+
+            // Damage Vulnerabilities, Resistances, Immunities
+            if (creature.damage_vulnerabilities) {
+                html += `<div class="mb-2"><p><strong class="text-red-600 dark:text-red-400">Damage Vulnerabilities:</strong> ${creature.damage_vulnerabilities}</p></div>`;
+            }
+            if (creature.damage_resistances) {
+                html += `<div class="mb-2"><p><strong class="text-red-600 dark:text-red-400">Damage Resistances:</strong> ${creature.damage_resistances}</p></div>`;
+            }
+            if (creature.damage_immunities) {
+                html += `<div class="mb-2"><p><strong class="text-red-600 dark:text-red-400">Damage Immunities:</strong> ${creature.damage_immunities}</p></div>`;
+            }
+            if (creature.condition_immunities) {
+                html += `<div class="mb-2"><p><strong class="text-red-600 dark:text-red-400">Condition Immunities:</strong> ${creature.condition_immunities}</p></div>`;
+            }
+
+            // Senses
+            if (creature.senses) {
+                html += `<div class="mb-2"><p><strong class="text-red-600 dark:text-red-400">Senses:</strong> ${creature.senses}</p></div>`;
+            }
+
+            // Languages
+            if (creature.languages) {
+                html += `<div class="mb-4"><p><strong class="text-red-600 dark:text-red-400">Languages:</strong> ${creature.languages}</p></div>`;
+            }
+
+            if (creature.description) {
+                html += `<div class="mb-4 p-3 bg-gray-100 dark:bg-gray-700 rounded"><p class="text-sm italic">${creature.description}</p></div>`;
+            }
+
+            // Extract Legendary Resistance from traits or field
+            let legendaryResistanceCount = creature.legendary_resistance || 0;
+            let legendaryResistanceDesc = 'If the creature fails a saving throw, it can choose to succeed instead.';
+            let filteredTraits = creature.traits || [];
+
+            if (creature.traits?.length) {
+                filteredTraits = creature.traits.filter(trait => {
+                    const traitName = typeof trait === 'string' ? trait.split(':')[0] : trait.name;
+                    const match = traitName.match(/Legendary Resistance \((\d+)\/Day\)/i);
+                    if (match) {
+                        legendaryResistanceCount = parseInt(match[1]);
+                        if (typeof trait === 'object') {
+                            legendaryResistanceDesc = trait.desc || trait.description || legendaryResistanceDesc;
+                        }
+                        return false; // Filter out this trait
+                    }
+                    return true;
+                });
+            }
+
+            // Extract limited-use abilities and spellcasting
+            const limitedUseAbilities = [];
+            let spellcastingInfo = null;
+
+            // Helper function to parse limited uses
+            function parseLimitedUse(abilityName, desc) {
+                // Match patterns like "3/Day", "1/Day each", "Recharge 5-6", etc.
+                const perDayMatch = abilityName.match(/\((\d+)\/Day/i);
+                const rechargeMatch = abilityName.match(/\(Recharge (\d+)-(\d+)\)/i);
+
+                if (perDayMatch) {
+                    return { type: 'per_day', count: parseInt(perDayMatch[1]), name: abilityName, desc };
+                }
+                if (rechargeMatch) {
+                    return { type: 'recharge', dice: `${rechargeMatch[1]}-${rechargeMatch[2]}`, name: abilityName, desc };
+                }
+
+                // Check description for "X/day" patterns
+                const descPerDayMatch = desc?.match(/(\d+)\/day/i);
+                if (descPerDayMatch) {
+                    return { type: 'per_day', count: parseInt(descPerDayMatch[1]), name: abilityName, desc };
+                }
+
+                return null;
+            }
+
+            // Check for spellcasting in special_abilities and traits
+            function extractSpellcasting(abilities) {
+                if (!abilities) return null;
+
+                for (const ability of abilities) {
+                    const abilityName = typeof ability === 'string' ? ability.split(':')[0] : ability.name;
+                    const abilityDesc = typeof ability === 'string' ? ability.substring(ability.indexOf(':') + 1) : (ability.desc || ability.description || '');
+
+                    if (abilityName.match(/spellcasting/i)) {
+                        // Parse spell slots from description
+                        const spellInfo = { name: abilityName, desc: abilityDesc, slots: {}, spells: {} };
+
+                        // Normalize the description - handle both \n and \\n
+                        const spellDesc = abilityDesc.replace(/\\n/g, '\n');
+
+                        // Match spell slot patterns like "1st level (4 slots): cure wounds, shield"
+                        // Updated regex to capture the spell names after the colon
+                        const slotMatches = spellDesc.matchAll(/(\d+)(?:st|nd|rd|th) level \((\d+) slots?\): ([^\n]+)/gi);
+                        for (const match of slotMatches) {
+                            const level = parseInt(match[1]);
+                            const slots = parseInt(match[2]);
+                            const spellList = match[3].split(',').map(s => s.trim());
+                            spellInfo.slots[level] = slots;
+                            spellInfo.spells[level] = spellList;
+                        }
+
+                        // Also check for "Cantrips (at will): spell1, spell2"
+                        const cantripMatch = spellDesc.match(/Cantrips \(at will\): ([^\n]+)/i);
+                        if (cantripMatch) {
+                            spellInfo.spells[0] = cantripMatch[1].split(',').map(s => s.trim());
+                        }
+
+                        // Also check for "At will", "1/day each", "3/day each" patterns
+                        // spellDesc already normalized above
+                        const normalizedDesc = spellDesc;
+                        const atWillMatch = normalizedDesc.match(/At will: ([^\n]+)/i);
+                        if (atWillMatch) {
+                            spellInfo.atWill = atWillMatch[1].split(',').map(s => s.trim());
+                        }
+
+                        const perDayMatches = normalizedDesc.matchAll(/(\d+)\/day each: ([^\n]+)/gi);
+                        spellInfo.perDay = {};
+                        for (const match of perDayMatches) {
+                            const count = parseInt(match[1]);
+                            const spells = match[2].split(',').map(s => s.trim());
+                            spellInfo.perDay[count] = spells;
+                        }
+
+                        return spellInfo;
+                    }
+                }
+                return null;
+            }
+
+            // Extract spellcasting
+            spellcastingInfo = extractSpellcasting(creature.special_abilities) || extractSpellcasting(creature.traits);
+
+            // For custom creatures with direct spellcasting field (v1.2.6+)
+            if (!spellcastingInfo && creature.spellcasting) {
+                // Parse the spellcasting text to extract spell slots and spell names
+                const spellInfo = { name: 'Spellcasting', desc: creature.spellcasting, slots: {}, spells: {} };
+
+                const spellDesc = creature.spellcasting;
+
+                // Match spell slot patterns like "1st level (4 slots): cure wounds, shield"
+                const slotMatches = spellDesc.matchAll(/(\d+)(?:st|nd|rd|th) level \((\d+) slots?\): ([^\n]+)/gi);
+                for (const match of slotMatches) {
+                    const level = parseInt(match[1]);
+                    const slots = parseInt(match[2]);
+                    const spellList = match[3].split(',').map(s => s.trim());
+                    spellInfo.slots[level] = slots;
+                    spellInfo.spells[level] = spellList;
+                }
+
+                // Also check for "Cantrips (at will): spell1, spell2"
+                const cantripMatch = spellDesc.match(/Cantrips \(at will\): ([^\n]+)/i);
+                if (cantripMatch) {
+                    spellInfo.spells[0] = cantripMatch[1].split(',').map(s => s.trim());
+                }
+
+                // Check for "At will" spells
+                const atWillMatch = spellDesc.match(/At will: ([^\n]+)/i);
+                if (atWillMatch) {
+                    spellInfo.atWill = atWillMatch[1].split(',').map(s => s.trim());
+                }
+
+                // Check for "X/day each" patterns
+                const perDayMatches = spellDesc.matchAll(/(\d+)\/day each: ([^\n]+)/gi);
+                spellInfo.perDay = {};
+                for (const match of perDayMatches) {
+                    const count = parseInt(match[1]);
+                    const spells = match[2].split(',').map(s => s.trim());
+                    spellInfo.perDay[count] = spells;
+                }
+
+                spellcastingInfo = spellInfo;
+            }
+
+            if (creature.special_abilities?.length) {
+                html += '<div class="mb-4"><h3 class="text-xl font-bold mb-2">Special Abilities</h3>';
+                creature.special_abilities.forEach(ability => {
+                    const abilityName = typeof ability === 'string' ? ability.split(':')[0] : ability.name;
+                    const abilityDesc = typeof ability === 'string' ? ability.substring(ability.indexOf(':') + 1) : (ability.desc || ability.description || '');
+
+                    // Skip spellcasting here (will display separately)
+                    if (abilityName.match(/spellcasting/i)) {
+                        return;
+                    }
+
+                    // Check for limited use
+                    const limitedUse = parseLimitedUse(abilityName, abilityDesc);
+                    if (limitedUse) {
+                        limitedUseAbilities.push({ ...limitedUse, section: 'special_abilities' });
+                    }
+
+                    html += `<p class="mb-2"><strong>${abilityName}:</strong> ${abilityDesc}</p>`;
+                });
+                html += '</div>';
+            }
+
+            if (filteredTraits.length) {
+                html += '<div class="mb-4"><h3 class="text-xl font-bold mb-2">Traits</h3>';
+                filteredTraits.forEach(trait => {
+                    const traitName = typeof trait === 'string' ? trait.split(':')[0] : trait.name;
+                    const traitDesc = typeof trait === 'string' ? trait.substring(trait.indexOf(':') + 1) : (trait.desc || trait.description || '');
+
+                    // Skip spellcasting (will display separately)
+                    if (traitName.match(/spellcasting/i)) {
+                        return;
+                    }
+
+                    // Check for limited use
+                    const limitedUse = parseLimitedUse(traitName, traitDesc);
+                    if (limitedUse) {
+                        limitedUseAbilities.push({ ...limitedUse, section: 'traits' });
+                    }
+
+                    html += `<p class="mb-2"><strong>${traitName}:</strong> ${traitDesc}</p>`;
+                });
+                html += '</div>';
+            }
+
+            // Display Spellcasting
+            if (spellcastingInfo) {
+                html += '<div class="mb-4 p-4 bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20 rounded-lg border-2 border-purple-400">';
+                html += '<h3 class="text-xl font-bold mb-2 text-purple-900 dark:text-purple-300">✨ ' + spellcastingInfo.name + '</h3>';
+                // Handle both \n and \\n newlines
+                const firstLine = spellcastingInfo.desc.split(/\\n|\n/)[0];
+                html += `<p class="text-sm mb-3">${firstLine}</p>`;
+
+                // Display cantrips if present
+                if (spellcastingInfo.spells && spellcastingInfo.spells[0]) {
+                    html += '<div class="mb-3">';
+                    html += '<span class="font-semibold">Cantrips (at will):</span> ';
+                    const clickableCantrips = spellcastingInfo.spells[0].map(spell => {
+                        const indicator = getSpellActionIndicator(spell);
+                        return `${indicator}<span class="cursor-pointer hover:underline text-purple-700 dark:text-purple-400 font-medium" onclick="showSpellDetails('${spell.toLowerCase()}')">${spell}</span>`;
+                    });
+                    html += clickableCantrips.join(', ');
+                    html += '</div>';
+                }
+
+                // Display spell slots with checkboxes and spell names
+                const slotLevels = (spellcastingInfo.slots && typeof spellcastingInfo.slots === 'object')
+                    ? Object.keys(spellcastingInfo.slots).sort((a, b) => parseInt(a) - parseInt(b))
+                    : [];
+                if (slotLevels.length > 0) {
+                    html += '<div class="space-y-3 mb-3">';
+                    slotLevels.forEach(level => {
+                        const slots = spellcastingInfo.slots[level];
+                        const spellList = spellcastingInfo.spells[level] || [];
+                        const slotId = `spell-slots-${name.replace(/[^a-zA-Z0-9]/g, '')}-lv${level}`;
+
+                        const levelSuffix = level === '1' ? 'st' : level === '2' ? 'nd' : level === '3' ? 'rd' : 'th';
+
+                        html += '<div class="p-2 bg-white dark:bg-gray-700 rounded border border-purple-300 dark:border-purple-600">';
+                        html += '<div class="flex items-center gap-3 mb-1">';
+                        html += `<span class="text-sm font-semibold min-w-[80px]">${level}${levelSuffix} Level (${slots}):</span>`;
+                        html += '<div class="flex gap-1 flex-wrap">';
+                        for (let i = 0; i < slots; i++) {
+                            html += `<input type="checkbox" id="${slotId}-${i}" class="w-4 h-4 cursor-pointer accent-purple-600" title="Slot ${i+1}" />`;
+                        }
+                        html += '</div>';
+                        html += `<button onclick="resetSpellSlots('${slotId}', ${slots})" class="ml-auto px-2 py-1 bg-purple-600 hover:bg-purple-700 text-white rounded text-xs">Reset</button>`;
+                        html += '</div>';
+
+                        // Display spell names (clickable) with action indicators
+                        if (spellList.length > 0) {
+                            html += '<div class="text-sm text-gray-700 dark:text-gray-300 pl-2">';
+                            const clickableSpells = spellList.map(spell => {
+                                const indicator = getSpellActionIndicator(spell);
+                                return `${indicator}<span class="cursor-pointer hover:underline text-purple-700 dark:text-purple-400 font-medium" onclick="showSpellDetails('${spell.toLowerCase()}')">${spell}</span>`;
+                            });
+                            html += clickableSpells.join(', ');
+                            html += '</div>';
+                        }
+                        html += '</div>';
+                    });
+                    html += '</div>';
+                }
+
+                // Display At Will spells (clickable)
+                if (spellcastingInfo.atWill) {
+                    const clickableAtWill = spellcastingInfo.atWill.map(spell =>
+                        `<span class="cursor-pointer hover:underline text-purple-700 dark:text-purple-400 font-medium" onclick="showSpellDetails('${spell.toLowerCase()}')">${spell}</span>`
+                    );
+                    html += '<div class="mb-2"><span class="font-semibold">At will:</span> ' + clickableAtWill.join(', ') + '</div>';
+                }
+
+                // Display X/day each spells with counters
+                const perDayKeys = (spellcastingInfo.perDay && typeof spellcastingInfo.perDay === 'object')
+                    ? Object.keys(spellcastingInfo.perDay).sort((a, b) => parseInt(b) - parseInt(a))
+                    : [];
+                if (perDayKeys.length > 0) {
+                    html += '<div class="space-y-2">';
+                    perDayKeys.forEach(count => {
+                        const spells = spellcastingInfo.perDay[count];
+                        const counterId = `spell-perday-${name.replace(/[^a-zA-Z0-9]/g, '')}-${count}`;
+
+                        html += '<div class="flex items-start gap-3">';
+                        html += `<span class="text-sm font-semibold min-w-[80px]">${count}/day each:</span>`;
+                        html += '<div class="flex-1">';
+                        html += '<div class="flex items-center gap-2 mb-1">';
+                        html += `<button onclick="decrementCounter('${counterId}', ${count})" class="px-2 py-0.5 bg-purple-600 hover:bg-purple-700 text-white rounded text-xs font-bold">−</button>`;
+                        html += `<span id="${counterId}" class="text-lg font-bold text-purple-900 dark:text-purple-300">${count}</span>`;
+                        html += `<span class="text-sm text-gray-600 dark:text-gray-400">/${count}</span>`;
+                        html += `<button onclick="resetCounter('${counterId}', ${count})" class="px-2 py-0.5 bg-purple-600 hover:bg-purple-700 text-white rounded text-xs">Reset</button>`;
+                        html += '</div>';
+                        const clickablePerDay = spells.map(spell =>
+                            `<span class="cursor-pointer hover:underline text-purple-700 dark:text-purple-400 font-medium" onclick="showSpellDetails('${spell.toLowerCase()}')">${spell}</span>`
+                        );
+                        html += '<div class="text-sm">' + clickablePerDay.join(', ') + '</div>';
+                        html += '</div>';
+                        html += '</div>';
+                    });
+                    html += '</div>';
+                }
+
+                html += '</div>';
+            }
+
+            if (creature.actions?.length) {
+                html += '<div class="mb-4"><h3 class="text-xl font-bold mb-2 text-red-600 dark:text-red-400">Actions</h3>';
+                creature.actions.forEach(action => {
+                    const actionName = typeof action === 'string' ? action.split(':')[0] : action.name;
+                    const actionDesc = typeof action === 'string' ? action.substring(action.indexOf(':') + 1) : (action.desc || action.description || '');
+
+                    // Check for limited use (like "Breath Weapon (Recharge 5-6)")
+                    const limitedUse = parseLimitedUse(actionName, actionDesc);
+                    if (limitedUse) {
+                        limitedUseAbilities.push({ ...limitedUse, section: 'actions' });
+                    }
+
+                    // Add action indicator - all standard actions are 1 action
+                    const indicator = '<span class="action-indicator action-circle" title="Action">A</span>';
+                    html += `<p class="mb-2">${indicator}<strong>${actionName}:</strong> ${actionDesc}</p>`;
+                });
+                html += '</div>';
+            }
+
+            // Display Bonus Actions
+            if (creature.bonus_actions?.length) {
+                html += '<div class="mb-4"><h3 class="text-xl font-bold mb-2 text-orange-600 dark:text-orange-400">Bonus Actions</h3>';
+                creature.bonus_actions.forEach(action => {
+                    const actionName = typeof action === 'string' ? action.split(':')[0] : action.name;
+                    const actionDesc = typeof action === 'string' ? action.substring(action.indexOf(':') + 1) : (action.desc || action.description || '');
+
+                    // Add bonus action indicator
+                    const indicator = '<span class="bonus-action-triangle" title="Bonus Action"></span>';
+                    html += `<p class="mb-2">${indicator}<strong>${actionName}:</strong> ${actionDesc}</p>`;
+                });
+                html += '</div>';
+            }
+
+            // Display Limited Use Abilities with counters
+            if (limitedUseAbilities.length > 0) {
+                html += '<div class="mb-4 p-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-lg border-2 border-green-400">';
+                html += '<h3 class="text-xl font-bold mb-3 text-green-900 dark:text-green-300">⏱️ Limited Use Abilities</h3>';
+
+                limitedUseAbilities.forEach((ability, index) => {
+                    if (ability.type === 'per_day') {
+                        const counterId = `limited-${name.replace(/[^a-zA-Z0-9]/g, '')}-${index}`;
+                        html += '<div class="mb-3 p-3 bg-white dark:bg-gray-700 rounded">';
+                        html += `<div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">`;
+                        html += `<span class="font-semibold">${ability.name}</span>`;
+                        html += `<div class="flex items-center gap-2 sm:ml-auto flex-wrap">`;
+                        html += `<button onclick="decrementCounter('${counterId}', ${ability.count})" class="px-2 py-1 bg-green-600 hover:bg-green-700 text-white rounded font-bold text-sm">−</button>`;
+                        html += `<span id="${counterId}" class="text-lg sm:text-xl font-bold text-green-900 dark:text-green-300">${ability.count}</span>`;
+                        html += `<span class="text-sm text-gray-600 dark:text-gray-400">/${ability.count}</span>`;
+                        html += `<button onclick="resetCounter('${counterId}', ${ability.count})" class="px-2 py-1 bg-green-600 hover:bg-green-700 text-white rounded text-xs sm:text-sm">Reset</button>`;
+                        html += `</div></div>`;
+                        if (ability.desc) {
+                            html += `<p class="text-sm text-gray-700 dark:text-gray-300">${ability.desc}</p>`;
+                        }
+                        html += '</div>';
+                    } else if (ability.type === 'recharge') {
+                        const rechargeId = `recharge-${name.replace(/[^a-zA-Z0-9]/g, '')}-${index}`;
+                        html += '<div class="mb-3 p-3 bg-white dark:bg-gray-700 rounded">';
+                        html += `<div class="flex flex-col gap-2 mb-2">`;
+                        html += `<span class="font-semibold">${ability.name}</span>`;
+                        html += `<div class="flex items-center gap-2 flex-wrap">`;
+                        html += `<span class="text-xs px-2 py-1 bg-orange-500 text-white rounded font-semibold whitespace-nowrap">Recharge ${ability.dice}</span>`;
+                        html += `<button id="${rechargeId}-use" onclick="useRechargeAbility('${rechargeId}')" class="px-2 sm:px-3 py-1 bg-green-600 hover:bg-green-700 text-white rounded text-xs sm:text-sm font-semibold">Use</button>`;
+                        html += `<button id="${rechargeId}-recharge" onclick="markRecharged('${rechargeId}')" class="px-2 sm:px-3 py-1 bg-orange-600 hover:bg-orange-700 text-white rounded text-xs sm:text-sm" disabled style="opacity: 0.5; cursor: not-allowed;">Recharge</button>`;
+                        html += `</div></div>`;
+                        if (ability.desc) {
+                            html += `<p class="text-sm text-gray-700 dark:text-gray-300">${ability.desc}</p>`;
+                        }
+                        html += '</div>';
+                    }
+                });
+
+                html += '</div>';
+            }
+
+            if (creature.reactions?.length) {
+                html += '<div class="mb-4"><h3 class="text-xl font-bold mb-2 text-blue-600 dark:text-blue-400">Reactions</h3>';
+                creature.reactions.forEach(reaction => {
+                    const indicator = '<span class="action-indicator reaction-square" title="Reaction">R</span>';
+                    if (typeof reaction === 'string') {
+                        html += `<p class="mb-2">${indicator}<strong>${reaction.split(':')[0]}:</strong>${reaction.substring(reaction.indexOf(':') + 1)}</p>`;
+                    } else {
+                        const desc = reaction.desc || reaction.description || '';
+                        html += `<p class="mb-2">${indicator}<strong>${reaction.name}:</strong> ${desc}</p>`;
+                    }
+                });
+                html += '</div>';
+            }
+
+            // Display Legendary Resistance if present
+            if (legendaryResistanceCount > 0) {
+                const counterId = `lr-counter-${name.replace(/[^a-zA-Z0-9]/g, '')}`;
+                html += '<div class="mb-4 p-4 bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-lg border-2 border-yellow-400">';
+                html += '<h3 class="text-xl font-bold mb-2 text-yellow-900 dark:text-yellow-300">⚡ Legendary Resistance</h3>';
+                html += '<div class="mb-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">';
+                html += `<div class="text-sm"><strong>Uses Remaining:</strong></div>`;
+                html += `<div class="flex items-center gap-2 flex-wrap">`;
+                html += `<button onclick="decrementCounter('${counterId}', ${legendaryResistanceCount})" class="px-2 sm:px-3 py-1 bg-yellow-600 hover:bg-yellow-700 text-white rounded-lg font-bold text-base sm:text-lg">−</button>`;
+                html += `<div class="px-3 sm:px-4 py-1 sm:py-2 bg-white dark:bg-gray-700 border-2 border-yellow-600 rounded-lg min-w-[50px] sm:min-w-[60px] text-center">`;
+                html += `<span id="${counterId}" class="text-xl sm:text-2xl font-bold text-yellow-900 dark:text-yellow-300">${legendaryResistanceCount}</span>`;
+                html += `<span class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">/${legendaryResistanceCount}</span>`;
+                html += `</div>`;
+                html += `<button onclick="resetCounter('${counterId}', ${legendaryResistanceCount})" class="px-2 sm:px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs sm:text-sm">Reset</button>`;
+                html += `</div></div>`;
+                html += `<p class="text-sm text-gray-700 dark:text-gray-300"><strong>Effect:</strong> ${legendaryResistanceDesc}</p>`;
+                html += '</div>';
+            }
+
+            if (creature.legendary_actions?.length) {
+                const laCounterId = `la-counter-${name.replace(/[^a-zA-Z0-9]/g, '')}`;
+                const laCount = creature.legendary_action_count || 3;
+                html += '<div class="mb-4 p-4 bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-lg border-2 border-yellow-400">';
+                html += '<h3 class="text-xl font-bold mb-2 text-yellow-900 dark:text-yellow-300">⚡ Legendary Actions</h3>';
+
+                // Interactive counter for legendary actions
+                html += '<div class="mb-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">';
+                html += `<div class="text-sm"><strong>Actions Remaining:</strong></div>`;
+                html += `<div class="flex items-center gap-2 flex-wrap">`;
+                html += `<button onclick="decrementCounter('${laCounterId}', ${laCount})" class="px-2 sm:px-3 py-1 bg-yellow-600 hover:bg-yellow-700 text-white rounded-lg font-bold text-base sm:text-lg">−</button>`;
+                html += `<div class="px-3 sm:px-4 py-1 sm:py-2 bg-white dark:bg-gray-700 border-2 border-yellow-600 rounded-lg min-w-[50px] sm:min-w-[60px] text-center">`;
+                html += `<span id="${laCounterId}" class="text-xl sm:text-2xl font-bold text-yellow-900 dark:text-yellow-300">${laCount}</span>`;
+                html += `<span class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">/${laCount}</span>`;
+                html += `</div>`;
+                html += `<button onclick="resetCounter('${laCounterId}', ${laCount})" class="px-2 sm:px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs sm:text-sm">Reset</button>`;
+                html += `</div></div>`;
+
+                html += `<p class="mb-3 text-sm">The creature can take ${laCount} legendary actions, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. The creature regains spent legendary actions at the start of its turn.</p>`;
+
+                creature.legendary_actions.forEach(action => {
+                    if (typeof action === 'string') {
+                        html += `<p class="mb-2"><strong>${action.split(':')[0]}:</strong>${action.substring(action.indexOf(':') + 1)}</p>`;
+                    } else {
+                        const desc = action.desc || action.description || '';
+                        html += `<p class="mb-2"><strong>${action.name}.</strong> ${desc}</p>`;
+                    }
+                });
+                html += '</div>';
+            }
+
+            console.log('🔍 Step FINAL: Setting modal content and opening...');
+            content.innerHTML = html;
+            console.log('✅ Content set');
+
+            modal.classList.add('active');
+            console.log('✅ Modal opened with active class');
+            console.log('🎉 showCreatureDetails COMPLETED SUCCESSFULLY');
+
+            } catch (error) {
+                console.error('💥 CRITICAL ERROR in showCreatureDetails:', error);
+                console.error('💥 Error message:', error.message);
+                console.error('💥 Error stack:', error.stack);
+                console.error('💥 This error prevented the modal from opening');
+                console.error('💥 Please report this error with the above details');
+            }
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('creatureModal').classList.remove('active');
+        }
+
+        // Open creature form
+        function openCreatureForm() {
+            document.getElementById('formTitle').textContent = 'Add Custom Creature';
+            document.getElementById('creatureForm').reset();
+            document.getElementById('editingCreatureId').value = '';
+
+            document.getElementById('creatureFormModal').classList.add('active');
+        }
+
+        // Close creature form
+        function closeCreatureForm() {
+            document.getElementById('creatureFormModal').classList.remove('active');
+        }
+
+        // Edit creature
+        function editCreature(name) {
+            closeModal();
+            const creature = customCreatures[name];
+            if (!creature) return;
+
+            document.getElementById('formTitle').textContent = 'Edit Custom Creature';
+            document.getElementById('editingCreatureId').value = name;
+
+            // Basic info
+            document.getElementById('creatureName').value = name;
+            document.getElementById('creatureType').value = creature.type || '';
+            document.getElementById('creatureCR').value = creature.cr || '';
+            document.getElementById('creatureAC').value = creature.ac || '';
+            document.getElementById('creatureHP').value = creature.hp || '';
+            document.getElementById('creatureSize').value = creature.size || '';
+            document.getElementById('creatureAlignment').value = creature.alignment || '';
+            document.getElementById('creatureSpeed').value = creature.speed || '';
+            document.getElementById('creatureDescription').value = creature.description || '';
+
+            // Ability scores - check both stats sub-object (old format) and direct properties (new format)
+            document.getElementById('creatureStr').value = creature.str || creature.stats?.str || '';
+            document.getElementById('creatureDex').value = creature.dex || creature.stats?.dex || '';
+            document.getElementById('creatureCon').value = creature.con || creature.stats?.con || '';
+            document.getElementById('creatureInt').value = creature.int || creature.stats?.int || '';
+            document.getElementById('creatureWis').value = creature.wis || creature.stats?.wis || '';
+            document.getElementById('creatureCha').value = creature.cha || creature.stats?.cha || '';
+
+            // Saving throws (convert from object to string)
+            if (creature.saves && Object.keys(creature.saves).length > 0) {
+                const savesStr = Object.entries(creature.saves)
+                    .map(([key, val]) => `${key.charAt(0).toUpperCase() + key.slice(1)} +${val}`)
+                    .join(', ');
+                document.getElementById('creatureSaves').value = savesStr;
+            } else {
+                document.getElementById('creatureSaves').value = '';
+            }
+
+            // Skills (already a string)
+            document.getElementById('creatureSkills').value = creature.skills || '';
+
+            // Defensive stats
+            document.getElementById('creatureDmgVuln').value = creature.damage_vulnerabilities || '';
+            document.getElementById('creatureDmgRes').value = creature.damage_resistances || '';
+            document.getElementById('creatureDmgImm').value = creature.damage_immunities || '';
+            document.getElementById('creatureCondImm').value = creature.condition_immunities || '';
+            document.getElementById('creatureSenses').value = creature.senses || '';
+            document.getElementById('creatureLanguages').value = creature.languages || '';
+
+            // Special abilities
+            if (creature.special_abilities?.length) {
+                const specialAbilitiesText = creature.special_abilities.map(a =>
+                    typeof a === 'string' ? a : `${a.name}: ${a.desc || a.description || ''}`
+                ).join('\n');
+                document.getElementById('creatureSpecialAbilities').value = specialAbilitiesText;
+            } else {
+                document.getElementById('creatureSpecialAbilities').value = '';
+            }
+
+            // Traits
+            if (creature.traits?.length) {
+                const traitsText = creature.traits.map(t =>
+                    typeof t === 'string' ? t : `${t.name}: ${t.desc || t.description || ''}`
+                ).join('\n');
+                document.getElementById('creatureTraits').value = traitsText;
+            } else {
+                document.getElementById('creatureTraits').value = '';
+            }
+
+            // Actions
+            if (creature.actions?.length) {
+                const actionsText = creature.actions.map(a =>
+                    typeof a === 'string' ? a : `${a.name}: ${a.desc || a.description || ''}`
+                ).join('\n');
+                document.getElementById('creatureActions').value = actionsText;
+            } else {
+                document.getElementById('creatureActions').value = '';
+            }
+
+            // Bonus actions
+            if (creature.bonus_actions?.length) {
+                const bonusActionsText = creature.bonus_actions.map(a =>
+                    typeof a === 'string' ? a : `${a.name}: ${a.desc || a.description || ''}`
+                ).join('\n');
+                document.getElementById('creatureBonusActions').value = bonusActionsText;
+            } else {
+                document.getElementById('creatureBonusActions').value = '';
+            }
+
+            // Reactions
+            if (creature.reactions?.length) {
+                const reactionsText = creature.reactions.map(r =>
+                    typeof r === 'string' ? r : `${r.name}: ${r.desc || r.description || ''}`
+                ).join('\n');
+                document.getElementById('creatureReactions').value = reactionsText;
+            } else {
+                document.getElementById('creatureReactions').value = '';
+            }
+
+            // Legendary features
+            document.getElementById('creatureLegendaryResistance').value = creature.legendary_resistance || '';
+            document.getElementById('creatureLegendaryActionCount').value = creature.legendary_action_count || '';
+
+            if (creature.legendary_actions?.length) {
+                const legActionsText = creature.legendary_actions.map(a =>
+                    typeof a === 'string' ? a : `${a.name}: ${a.desc || a.description || ''}`
+                ).join('\n');
+                document.getElementById('creatureLegendaryActions').value = legActionsText;
+            } else {
+                document.getElementById('creatureLegendaryActions').value = '';
+            }
+
+            // Spellcasting (NEW v1.3.6 - parse into organized fields)
+            const parseSpellcasting = (spellText) => {
+                if (!spellText) {
+                    // Clear all fields
+                    document.getElementById('spellcastingHeader').value = '';
+                    document.getElementById('spellCantrips').value = '';
+                    ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th'].forEach(level => {
+                        document.getElementById(`spell${level}`).value = '';
+                        document.getElementById(`spell${level}Slots`).value = '';
+                    });
+                    return;
+                }
+
+                // Parse the spellcasting text
+                const lines = spellText.split('\n');
+                let header = '';
+                const spellData = {};
+
+                lines.forEach(line => {
+                    line = line.trim();
+                    if (!line) return;
+
+                    // Check if it's a cantrip line
+                    const cantripMatch = line.match(/^Cantrips? \(at will\):\s*(.+)/i);
+                    if (cantripMatch) {
+                        spellData.cantrips = cantripMatch[1].trim();
+                        return;
+                    }
+
+                    // Check if it's a leveled spell line (e.g., "1st level (4 slots): shield, magic missile")
+                    const levelMatch = line.match(/^(\d+)(?:st|nd|rd|th) level\s*(?:\((\d+) slots?\))?:\s*(.+)/i);
+                    if (levelMatch) {
+                        const level = levelMatch[1];
+                        const slots = levelMatch[2] || '';
+                        const spells = levelMatch[3].trim();
+                        spellData[level] = { spells, slots };
+                        return;
+                    }
+
+                    // If not a spell line, assume it's part of header
+                    if (!cantripMatch && !levelMatch) {
+                        header += line + '\n';
+                    }
+                });
+
+                // Populate fields
+                document.getElementById('spellcastingHeader').value = header.trim();
+                document.getElementById('spellCantrips').value = spellData.cantrips || '';
+
+                const levelMap = {
+                    '1': '1st', '2': '2nd', '3': '3rd', '4': '4th', '5': '5th',
+                    '6': '6th', '7': '7th', '8': '8th', '9': '9th'
+                };
+
+                Object.keys(levelMap).forEach(num => {
+                    const suffix = levelMap[num];
+                    if (spellData[num]) {
+                        document.getElementById(`spell${suffix}`).value = spellData[num].spells;
+                        document.getElementById(`spell${suffix}Slots`).value = spellData[num].slots;
+                    } else {
+                        document.getElementById(`spell${suffix}`).value = '';
+                        document.getElementById(`spell${suffix}Slots`).value = '';
+                    }
+                });
+            };
+
+            parseSpellcasting(creature.spellcasting || '');
+
+            document.getElementById('creatureFormModal').classList.add('active');
+        }
+
+        // Delete creature
+        function deleteCreature(name) {
+            if (!customCreatures[name]) return;
+
+            // Create custom confirmation dialog
+            const confirmDialog = document.createElement('div');
+            confirmDialog.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-[60] p-4';
+            confirmDialog.innerHTML = `
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-sm w-full mx-4">
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">Are you sure you want to delete "${name}"? This cannot be undone.</p>
+                    <div class="flex justify-end space-x-3">
+                        <button class="px-4 py-2 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded" onclick="this.closest('.fixed').remove()">Cancel</button>
+                        <button class="px-4 py-2 bg-red-500 text-white hover:bg-red-600 rounded" onclick="confirmDelete('${name.replace(/'/g, "\\'")}'); this.closest('.fixed').remove();">Delete</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(confirmDialog);
+        }
+
+        function confirmDelete(name) {
+            delete customCreatures[name];
+            saveCustomCreatures();
+            allCreatures = getAllCreatures();
+            closeModal();
+            renderCreatures();
+            updateCounts();
+        }
+
+        // Add creature to battle tab
+        function addCreatureToBattleTab(name) {
+            if (typeof battleTabsManager !== 'undefined' && battleTabsManager) {
+                battleTabsManager.showAddToTabModal(name);
+                closeModal(); // Close the creature details modal
+            } else {
+                showNotification('Battle Tabs system not loaded. Please refresh the page.', 'error');
+            }
+        }
+
+        // Handle form submit
+        function handleFormSubmit(e) {
+            e.preventDefault();
+
+            const editingId = document.getElementById('editingCreatureId').value;
+            const name = document.getElementById('creatureName').value.trim();
+
+            // Check if name already exists (when adding new or renaming)
+            if (editingId !== name && (creaturesData[name] || customCreatures[name])) {
+                showNotification('A creature with this name already exists. Please choose a different name.', 'error');
+                return;
+            }
+
+            const creature = {
+                name: name,
+                type: document.getElementById('creatureType').value.trim(),
+                cr: document.getElementById('creatureCR').value.trim(),
+                ac: document.getElementById('creatureAC').value.trim(),
+                hp: document.getElementById('creatureHP').value.trim(),
+                size: document.getElementById('creatureSize').value,
+                alignment: document.getElementById('creatureAlignment').value.trim(),
+                speed: document.getElementById('creatureSpeed').value.trim(),
+                description: document.getElementById('creatureDescription').value.trim(),
+                data_source: 'custom',
+                verified: false
+            };
+
+            // Parse ability scores - store directly on creature like SRD creatures
+            const str = document.getElementById('creatureStr').value.trim();
+            const dex = document.getElementById('creatureDex').value.trim();
+            const con = document.getElementById('creatureCon').value.trim();
+            const int = document.getElementById('creatureInt').value.trim();
+            const wis = document.getElementById('creatureWis').value.trim();
+            const cha = document.getElementById('creatureCha').value.trim();
+
+            // Store stats directly on creature object (same as SRD creatures)
+            if (str) creature.str = parseInt(str);
+            if (dex) creature.dex = parseInt(dex);
+            if (con) creature.con = parseInt(con);
+            if (int) creature.int = parseInt(int);
+            if (wis) creature.wis = parseInt(wis);
+            if (cha) creature.cha = parseInt(cha);
+
+            // Parse saving throws (format: "Dex +5, Con +4" -> {dex: 5, con: 4})
+            const savesText = document.getElementById('creatureSaves').value.trim();
+            if (savesText) {
+                const saves = {};
+                savesText.split(',').forEach(save => {
+                    const match = save.trim().match(/^(\w+)\s*\+?(-?\d+)$/);
+                    if (match) {
+                        saves[match[1].toLowerCase()] = parseInt(match[2]);
+                    }
+                });
+                if (Object.keys(saves).length > 0) {
+                    creature.saves = saves;
+                }
+            }
+
+            // Parse skills (stored as string for simplicity)
+            const skillsText = document.getElementById('creatureSkills').value.trim();
+            if (skillsText) {
+                creature.skills = skillsText;
+            }
+
+            // Add defensive stats
+            const dmgVuln = document.getElementById('creatureDmgVuln').value.trim();
+            if (dmgVuln) creature.damage_vulnerabilities = dmgVuln;
+
+            const dmgRes = document.getElementById('creatureDmgRes').value.trim();
+            if (dmgRes) creature.damage_resistances = dmgRes;
+
+            const dmgImm = document.getElementById('creatureDmgImm').value.trim();
+            if (dmgImm) creature.damage_immunities = dmgImm;
+
+            const condImm = document.getElementById('creatureCondImm').value.trim();
+            if (condImm) creature.condition_immunities = condImm;
+
+            const senses = document.getElementById('creatureSenses').value.trim();
+            if (senses) creature.senses = senses;
+
+            const languages = document.getElementById('creatureLanguages').value.trim();
+            if (languages) creature.languages = languages;
+
+            // Parse special abilities
+            const specialAbilitiesText = document.getElementById('creatureSpecialAbilities').value.trim();
+            if (specialAbilitiesText) {
+                creature.special_abilities = specialAbilitiesText.split('\n').filter(a => a.trim()).map(ability => {
+                    const colonIndex = ability.indexOf(':');
+                    if (colonIndex > 0) {
+                        return {
+                            name: ability.substring(0, colonIndex).trim(),
+                            desc: ability.substring(colonIndex + 1).trim()
+                        };
+                    }
+                    return ability;
+                });
+            }
+
+            // Parse traits
+            const traitsText = document.getElementById('creatureTraits').value.trim();
+            if (traitsText) {
+                creature.traits = traitsText.split('\n').filter(t => t.trim()).map(trait => {
+                    const colonIndex = trait.indexOf(':');
+                    if (colonIndex > 0) {
+                        return {
+                            name: trait.substring(0, colonIndex).trim(),
+                            desc: trait.substring(colonIndex + 1).trim()
+                        };
+                    }
+                    return trait;
+                });
+            }
+
+            // Parse actions
+            const actionsText = document.getElementById('creatureActions').value.trim();
+            if (actionsText) {
+                creature.actions = actionsText.split('\n').filter(a => a.trim()).map(action => {
+                    const colonIndex = action.indexOf(':');
+                    if (colonIndex > 0) {
+                        return {
+                            name: action.substring(0, colonIndex).trim(),
+                            desc: action.substring(colonIndex + 1).trim()
+                        };
+                    }
+                    return action;
+                });
+            }
+
+            // Parse bonus actions
+            const bonusActionsText = document.getElementById('creatureBonusActions').value.trim();
+            if (bonusActionsText) {
+                creature.bonus_actions = bonusActionsText.split('\n').filter(a => a.trim()).map(action => {
+                    const colonIndex = action.indexOf(':');
+                    if (colonIndex > 0) {
+                        return {
+                            name: action.substring(0, colonIndex).trim(),
+                            desc: action.substring(colonIndex + 1).trim()
+                        };
+                    }
+                    return action;
+                });
+            }
+
+            // Parse reactions
+            const reactionsText = document.getElementById('creatureReactions').value.trim();
+            if (reactionsText) {
+                creature.reactions = reactionsText.split('\n').filter(r => r.trim()).map(reaction => {
+                    const colonIndex = reaction.indexOf(':');
+                    if (colonIndex > 0) {
+                        return {
+                            name: reaction.substring(0, colonIndex).trim(),
+                            desc: reaction.substring(colonIndex + 1).trim()
+                        };
+                    }
+                    return reaction;
+                });
+            }
+
+            // Parse legendary resistance
+            const legRes = document.getElementById('creatureLegendaryResistance').value.trim();
+            if (legRes) {
+                creature.legendary_resistance = parseInt(legRes);
+            }
+
+            // Parse legendary actions
+            const legActCount = document.getElementById('creatureLegendaryActionCount').value.trim();
+            if (legActCount) {
+                creature.legendary_action_count = parseInt(legActCount);
+            }
+
+            const legActionsText = document.getElementById('creatureLegendaryActions').value.trim();
+            if (legActionsText) {
+                creature.legendary_actions = legActionsText.split('\n').filter(a => a.trim()).map(action => {
+                    const colonIndex = action.indexOf(':');
+                    if (colonIndex > 0) {
+                        return {
+                            name: action.substring(0, colonIndex).trim(),
+                            desc: action.substring(colonIndex + 1).trim()
+                        };
+                    }
+                    return action;
+                });
+            }
+
+            // Parse spellcasting (NEW v1.3.6 - organized by level)
+            const buildSpellcastingText = () => {
+                const header = document.getElementById('spellcastingHeader').value.trim();
+                const cantrips = document.getElementById('spellCantrips').value.trim();
+
+                const levels = [
+                    {num: 1, suffix: 'st', id: 'spell1st', slotsId: 'spell1stSlots'},
+                    {num: 2, suffix: 'nd', id: 'spell2nd', slotsId: 'spell2ndSlots'},
+                    {num: 3, suffix: 'rd', id: 'spell3rd', slotsId: 'spell3rdSlots'},
+                    {num: 4, suffix: 'th', id: 'spell4th', slotsId: 'spell4thSlots'},
+                    {num: 5, suffix: 'th', id: 'spell5th', slotsId: 'spell5thSlots'},
+                    {num: 6, suffix: 'th', id: 'spell6th', slotsId: 'spell6thSlots'},
+                    {num: 7, suffix: 'th', id: 'spell7th', slotsId: 'spell7thSlots'},
+                    {num: 8, suffix: 'th', id: 'spell8th', slotsId: 'spell8thSlots'},
+                    {num: 9, suffix: 'th', id: 'spell9th', slotsId: 'spell9thSlots'}
+                ];
+
+                let spellText = '';
+
+                // Add header if present
+                if (header) {
+                    spellText = header + '\n\n';
+                }
+
+                // Add cantrips
+                if (cantrips) {
+                    spellText += `Cantrips (at will): ${cantrips}\n`;
+                }
+
+                // Add leveled spells
+                levels.forEach(level => {
+                    const spells = document.getElementById(level.id).value.trim();
+                    const slots = document.getElementById(level.slotsId).value.trim();
+
+                    if (spells) {
+                        if (slots) {
+                            spellText += `${level.num}${level.suffix} level (${slots} slots): ${spells}\n`;
+                        } else {
+                            spellText += `${level.num}${level.suffix} level: ${spells}\n`;
+                        }
+                    }
+                });
+
+                return spellText.trim();
+            };
+
+            const spellcastingText = buildSpellcastingText();
+            if (spellcastingText) {
+                creature.spellcasting = spellcastingText;
+            }
+
+            // If editing and name changed, delete old entry
+            if (editingId && editingId !== name) {
+                delete customCreatures[editingId];
+            }
+
+            customCreatures[name] = creature;
+            saveCustomCreatures();
+            allCreatures = getAllCreatures();
+
+            closeCreatureForm();
+            renderCreatures();
+            updateCounts();
+            populateFilters();
+            showNotification('Creature saved successfully!', 'success');
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-[70] p-4 rounded-lg shadow-lg max-w-md animate-slide-in ${
+                type === 'error' ? 'bg-red-500 text-white' :
+                type === 'success' ? 'bg-green-500 text-white' :
+                'bg-blue-500 text-white'
+            }`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transition = 'opacity 0.3s';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Counter functions for limited use abilities
+        function decrementCounter(counterId, maxValue) {
+            const counterEl = document.getElementById(counterId);
+            if (!counterEl) return;
+
+            let currentValue = parseInt(counterEl.textContent);
+            if (currentValue > 0) {
+                currentValue--;
+                counterEl.textContent = currentValue;
+
+                // Visual feedback when depleted
+                if (currentValue === 0) {
+                    counterEl.classList.add('text-red-600', 'dark:text-red-400');
+                }
+            }
+        }
+
+        function resetCounter(counterId, maxValue) {
+            const counterEl = document.getElementById(counterId);
+            if (!counterEl) return;
+
+            counterEl.textContent = maxValue;
+            counterEl.classList.remove('text-red-600', 'dark:text-red-400');
+        }
+
+        // Spell slot checkbox functions
+        function resetSpellSlots(slotIdPrefix, totalSlots) {
+            for (let i = 0; i < totalSlots; i++) {
+                const checkbox = document.getElementById(`${slotIdPrefix}-${i}`);
+                if (checkbox) {
+                    checkbox.checked = false;
+                }
+            }
+        }
+
+        // Recharge ability functions
+        function useRechargeAbility(rechargeId) {
+            const useBtn = document.getElementById(`${rechargeId}-use`);
+            const rechargeBtn = document.getElementById(`${rechargeId}-recharge`);
+
+            if (useBtn && rechargeBtn) {
+                // Disable Use button
+                useBtn.disabled = true;
+                useBtn.style.opacity = '0.5';
+                useBtn.style.cursor = 'not-allowed';
+                useBtn.classList.remove('hover:bg-green-700');
+
+                // Enable Recharge button
+                rechargeBtn.disabled = false;
+                rechargeBtn.style.opacity = '1';
+                rechargeBtn.style.cursor = 'pointer';
+
+                showNotification('Ability used! Use the Recharge button when it recharges.', 'info');
+            }
+        }
+
+        function markRecharged(rechargeId) {
+            const useBtn = document.getElementById(`${rechargeId}-use`);
+            const rechargeBtn = document.getElementById(`${rechargeId}-recharge`);
+
+            if (useBtn && rechargeBtn) {
+                // Enable Use button
+                useBtn.disabled = false;
+                useBtn.style.opacity = '1';
+                useBtn.style.cursor = 'pointer';
+                useBtn.classList.add('hover:bg-green-700');
+
+                // Disable Recharge button
+                rechargeBtn.disabled = true;
+                rechargeBtn.style.opacity = '0.5';
+                rechargeBtn.style.cursor = 'not-allowed';
+
+                showNotification('Ability recharged! You can use it again.', 'success');
+            }
+        }
+
+        // Spell detail modal functions
+        function showSpellDetails(spellName) {
+            const modal = document.getElementById('spellModal');
+            const content = document.getElementById('spellModalContent');
+
+            // Normalize spell name (lowercase, trim)
+            const normalizedName = spellName.toLowerCase().trim();
+
+            // Check if spellsData is loaded
+            if (typeof spellsData === 'undefined') {
+                content.innerHTML = `
+                    <h2 class="text-2xl font-bold mb-4 text-red-600">Spell Database Not Loaded</h2>
+                    <p class="text-gray-700 dark:text-gray-300">The spell database failed to load. Please refresh the page.</p>
+                `;
+                modal.classList.add('active');
+                return;
+            }
+
+            // Look up spell
+            const spell = spellsData[normalizedName];
+
+            if (!spell) {
+                content.innerHTML = `
+                    <h2 class="text-2xl font-bold mb-4 text-yellow-600">Spell Not Found</h2>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">The spell "<strong>${spellName}</strong>" is not in the SRD 5.1 spell database.</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">This could be because:</p>
+                    <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-400 ml-4 mt-2">
+                        <li>The spell is from a non-SRD source</li>
+                        <li>The spell name has a typo or variation</li>
+                        <li>The spell database is incomplete (we're still adding more spells)</li>
+                    </ul>
+                `;
+                modal.classList.add('active');
+                return;
+            }
+
+            // Build spell detail HTML
+            let html = '';
+
+            // Spell header
+            const levelText = spell.level === 0 ? 'Cantrip' : `${getOrdinalSuffix(spell.level)}-level`;
+            const actionIndicator = getActionIndicator(spell.castingTime);
+            html += `<h2 class="text-3xl font-bold mb-2 text-purple-700 dark:text-purple-400">${actionIndicator}${capitalizeWords(normalizedName)}</h2>`;
+            html += `<p class="text-lg italic mb-4 text-gray-600 dark:text-gray-400">${levelText} ${spell.school}</p>`;
+
+            // Action economy legend
+            html += createActionLegend();
+
+            html += '<div class="space-y-3">';
+
+            // Casting details
+            html += `<div><strong class="text-purple-700 dark:text-purple-400">Casting Time:</strong> <span class="text-gray-700 dark:text-gray-300">${spell.castingTime}</span></div>`;
+            html += `<div><strong class="text-purple-700 dark:text-purple-400">Range:</strong> <span class="text-gray-700 dark:text-gray-300">${spell.range}</span></div>`;
+            html += `<div><strong class="text-purple-700 dark:text-purple-400">Components:</strong> <span class="text-gray-700 dark:text-gray-300">${spell.components}</span></div>`;
+            html += `<div><strong class="text-purple-700 dark:text-purple-400">Duration:</strong> <span class="text-gray-700 dark:text-gray-300">${spell.duration}</span></div>`;
+
+            html += '</div>';
+
+            // Description
+            html += `<div class="mt-4 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">`;
+            html += `<p class="text-gray-700 dark:text-gray-300 leading-relaxed">${spell.description}</p>`;
+            html += `</div>`;
+
+            // Damage information
+            if (spell.damage || spell.damageType) {
+                html += `<div class="mt-4 p-3 bg-red-50 dark:bg-red-900/20 rounded-lg border-2 border-red-400">`;
+                html += `<h3 class="text-lg font-bold mb-2 text-red-700 dark:text-red-400">💥 Damage</h3>`;
+                if (spell.damageType) {
+                    html += `<p class="text-sm"><strong>Type:</strong> ${capitalizeWords(spell.damageType)}</p>`;
+                }
+                if (spell.damage) {
+                    html += `<p class="text-sm"><strong>Amount:</strong> ${spell.damage}</p>`;
+                }
+                html += `</div>`;
+            }
+
+            // Higher levels
+            if (spell.higherLevels) {
+                html += `<div class="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-2 border-blue-400">`;
+                html += `<h3 class="text-lg font-bold mb-2 text-blue-700 dark:text-blue-400">📈 At Higher Levels</h3>`;
+                html += `<p class="text-sm text-gray-700 dark:text-gray-300">${spell.higherLevels}</p>`;
+                html += `</div>`;
+            }
+
+            // Effects
+            if (spell.effect) {
+                html += `<div class="mt-4 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg border-2 border-green-400">`;
+                html += `<h3 class="text-lg font-bold mb-2 text-green-700 dark:text-green-400">✨ Effects</h3>`;
+                html += `<p class="text-sm text-gray-700 dark:text-gray-300">${spell.effect}</p>`;
+                html += `</div>`;
+            }
+
+            content.innerHTML = html;
+            modal.classList.add('active');
+        }
+
+        function closeSpellModal() {
+            document.getElementById('spellModal').classList.remove('active');
+        }
+
+        // Helper: Get ordinal suffix (1st, 2nd, 3rd, etc.)
+        function getOrdinalSuffix(num) {
+            const j = num % 10;
+            const k = num % 100;
+            if (j === 1 && k !== 11) return num + 'st';
+            if (j === 2 && k !== 12) return num + 'nd';
+            if (j === 3 && k !== 13) return num + 'rd';
+            return num + 'th';
+        }
+
+        // Helper: Capitalize words
+        function capitalizeWords(str) {
+            return str.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+        }
+
+        // Helper: Get action type indicator
+        function getActionIndicator(castingTime) {
+            if (!castingTime) return '';
+
+            const lowerTime = castingTime.toLowerCase();
+
+            if (lowerTime.includes('bonus action')) {
+                return '<span class="bonus-action-triangle" title="Bonus Action"></span>';
+            } else if (lowerTime.includes('reaction')) {
+                return '<span class="action-indicator reaction-square" title="Reaction">R</span>';
+            } else if (lowerTime.includes('1 action') || lowerTime.includes('action')) {
+                return '<span class="action-indicator action-circle" title="Action">A</span>';
+            }
+
+            return '';
+        }
+
+        // Helper: Get action indicator for a spell by name (looks up in spellsData)
+        function getSpellActionIndicator(spellName) {
+            try {
+                if (typeof spellsData === 'undefined') return '';
+
+                const normalizedName = spellName.toLowerCase().trim().replace(/\*/g, '');
+                const spell = spellsData[normalizedName];
+
+                if (spell && spell.castingTime) {
+                    return getActionIndicator(spell.castingTime);
+                }
+            } catch (e) {
+                // Silently fail if spell data not found
+            }
+
+            return '';
+        }
+
+        // Helper: Create action economy legend
+        function createActionLegend() {
+            return `
+                <div class="action-legend">
+                    <div class="legend-item">
+                        <span class="action-indicator action-circle">A</span>
+                        <span>Action</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="bonus-action-triangle"></span>
+                        <span>Bonus Action</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="action-indicator reaction-square">R</span>
+                        <span>Reaction</span>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-600 dark:text-gray-400 mt-2 italic">💡 Tip: Click spell names to view spell details</p>
+            `;
+        }
+
+        // Show conditions reference (SRD 5.1)
+        function showConditions() {
+            const modal = document.getElementById('conditionsModal');
+            const content = document.getElementById('conditionsModalContent');
+
+            const html = `
+                <h2 class="text-3xl font-bold mb-4 text-[#5D5CDE]">Conditions Reference (SRD 5.1)</h2>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">Official conditions from the 5th Edition Systems Reference Document</p>
+
+                <div class="space-y-4">
+                    <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        <h3 class="text-lg font-bold text-red-600 dark:text-red-400 mb-2">Blinded</h3>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>A blinded creature can't see and automatically fails any ability check that requires sight.</li>
+                            <li>Attack rolls against the creature have advantage, and the creature's attack rolls have disadvantage.</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        <h3 class="text-lg font-bold text-red-600 dark:text-red-400 mb-2">Charmed</h3>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>A charmed creature can't attack the charmer or target the charmer with harmful abilities or magical effects.</li>
+                            <li>The charmer has advantage on any ability check to interact socially with the creature.</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        <h3 class="text-lg font-bold text-red-600 dark:text-red-400 mb-2">Deafened</h3>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>A deafened creature can't hear and automatically fails any ability check that requires hearing.</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        <h3 class="text-lg font-bold text-red-600 dark:text-red-400 mb-2">Frightened</h3>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>A frightened creature has disadvantage on ability checks and attack rolls while the source of its fear is within line of sight.</li>
+                            <li>The creature can't willingly move closer to the source of its fear.</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        <h3 class="text-lg font-bold text-red-600 dark:text-red-400 mb-2">Grappled</h3>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>A grappled creature's speed becomes 0, and it can't benefit from any bonus to its speed.</li>
+                            <li>The condition ends if the grappler is incapacitated.</li>
+                            <li>The condition also ends if an effect removes the grappled creature from the reach of the grappler or grappling effect.</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        <h3 class="text-lg font-bold text-red-600 dark:text-red-400 mb-2">Incapacitated</h3>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>An incapacitated creature can't take actions or reactions.</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        <h3 class="text-lg font-bold text-red-600 dark:text-red-400 mb-2">Invisible</h3>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>An invisible creature is impossible to see without the aid of magic or a special sense. For the purpose of hiding, the creature is heavily obscured.</li>
+                            <li>The creature's location can be detected by any noise it makes or any tracks it leaves.</li>
+                            <li>Attack rolls against the creature have disadvantage, and the creature's attack rolls have advantage.</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        <h3 class="text-lg font-bold text-red-600 dark:text-red-400 mb-2">Paralyzed</h3>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>A paralyzed creature is incapacitated and can't move or speak.</li>
+                            <li>The creature automatically fails Strength and Dexterity saving throws.</li>
+                            <li>Attack rolls against the creature have advantage.</li>
+                            <li>Any attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature.</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        <h3 class="text-lg font-bold text-red-600 dark:text-red-400 mb-2">Petrified</h3>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>A petrified creature is transformed, along with any nonmagical object it is wearing or carrying, into a solid inanimate substance (usually stone).</li>
+                            <li>Its weight increases by a factor of ten, and it ceases aging.</li>
+                            <li>The creature is incapacitated, can't move or speak, and is unaware of its surroundings.</li>
+                            <li>Attack rolls against the creature have advantage.</li>
+                            <li>The creature automatically fails Strength and Dexterity saving throws.</li>
+                            <li>The creature has resistance to all damage.</li>
+                            <li>The creature is immune to poison and disease, although a poison or disease already in its system is suspended, not neutralized.</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        <h3 class="text-lg font-bold text-red-600 dark:text-red-400 mb-2">Poisoned</h3>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>A poisoned creature has disadvantage on attack rolls and ability checks.</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        <h3 class="text-lg font-bold text-red-600 dark:text-red-400 mb-2">Prone</h3>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>A prone creature's only movement option is to crawl, unless it stands up and thereby ends the condition.</li>
+                            <li>The creature has disadvantage on attack rolls.</li>
+                            <li>An attack roll against the creature has advantage if the attacker is within 5 feet of the creature. Otherwise, the attack roll has disadvantage.</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        <h3 class="text-lg font-bold text-red-600 dark:text-red-400 mb-2">Restrained</h3>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>A restrained creature's speed becomes 0, and it can't benefit from any bonus to its speed.</li>
+                            <li>Attack rolls against the creature have advantage, and the creature's attack rolls have disadvantage.</li>
+                            <li>The creature has disadvantage on Dexterity saving throws.</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        <h3 class="text-lg font-bold text-red-600 dark:text-red-400 mb-2">Stunned</h3>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>A stunned creature is incapacitated, can't move, and can speak only falteringly.</li>
+                            <li>The creature automatically fails Strength and Dexterity saving throws.</li>
+                            <li>Attack rolls against the creature have advantage.</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        <h3 class="text-lg font-bold text-red-600 dark:text-red-400 mb-2">Unconscious</h3>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>An unconscious creature is incapacitated, can't move or speak, and is unaware of its surroundings.</li>
+                            <li>The creature drops whatever it's holding and falls prone.</li>
+                            <li>The creature automatically fails Strength and Dexterity saving throws.</li>
+                            <li>Attack rolls against the creature have advantage.</li>
+                            <li>Any attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-6">Source: Systems Reference Document (SRD) 5.1 - OGL 1.0a</p>
+            `;
+
+            content.innerHTML = html;
+            modal.classList.add('active');
+        }
+
+        function closeConditions() {
+            document.getElementById('conditionsModal').classList.remove('active');
+        }
+
+        // ===== SPELL SELECTOR FUNCTIONS (v1.2.6) =====
+
+        // Helper function to convert spell data objects to arrays
+        function convertSpellsToArray() {
+            const spellArray = [];
+
+            // Convert spellsData object to array
+            // Note: additional-spells-srd.js merges into window.spellsData automatically
+            if (window.spellsData && typeof window.spellsData === 'object') {
+                console.log('📚 Loading spells from spellsData:', Object.keys(window.spellsData).length, 'total spells (159 core + 176 additional = 335)');
+
+                for (const [key, value] of Object.entries(window.spellsData)) {
+                    if (!value || typeof value !== 'object') continue;
+
+                    spellArray.push({
+                        name: value.name || key.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
+                        level: String(value.level !== undefined ? value.level : '0'),
+                        school: value.school || 'Unknown',
+                        casting_time: value.castingTime || value.casting_time || 'Unknown',
+                        range: value.range || 'Unknown',
+                        components: value.components || 'Unknown',
+                        duration: value.duration || 'Unknown',
+                        description: value.description || 'No description available.'
+                    });
+                }
+
+                console.log('✅ Successfully converted', spellArray.length, 'spells for spell selector');
+            } else {
+                console.error('❌ spellsData not loaded! Make sure spells_srd.js and additional-spells-srd.js are loaded.');
+                showNotification('Spell database not loaded. Please refresh the page.', 'error');
+            }
+
+            return spellArray;
+        }
+
+        function openSpellSelector() {
+            const modal = document.getElementById('spellSelectorModal');
+            const spellList = document.getElementById('spellList');
+
+            // Combine all spells from both sources
+            const allSpells = convertSpellsToArray();
+
+            // Render all spells initially
+            renderSpellList(allSpells);
+
+            modal.classList.add('active');
+        }
+
+        function renderSpellList(spells) {
+            const spellList = document.getElementById('spellList');
+
+            if (spells.length === 0) {
+                spellList.innerHTML = '<div class="text-center text-gray-500 dark:text-gray-400 py-8">No spells found matching your criteria.</div>';
+                return;
+            }
+
+            const html = spells.map(spell => `
+                <div class="bg-white dark:bg-gray-700 p-4 rounded-lg border border-gray-200 dark:border-gray-600 hover:border-purple-500 dark:hover:border-purple-400 transition relative">
+                    <div class="flex items-start gap-3">
+                        <input type="checkbox"
+                               class="spell-checkbox mt-1 w-5 h-5 text-purple-600 rounded focus:ring-purple-500 cursor-pointer"
+                               data-spell-name="${spell.name.replace(/"/g, '&quot;')}"
+                               data-spell-level="${spell.level}"
+                               data-spell-school="${spell.school}"
+                               data-spell-description="${spell.description.replace(/"/g, '&quot;')}"
+                               onchange="updateSpellSelectionCount()"
+                               onclick="event.stopPropagation();">
+                        <div class="flex-1 cursor-pointer" onclick="toggleSpellCheckbox(this.previousElementSibling)">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-gray-900 dark:text-white">${spell.name}</h4>
+                                <span class="text-xs px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded">
+                                    ${spell.level === '0' ? 'Cantrip' : `Level ${spell.level}`}
+                                </span>
+                            </div>
+                            <div class="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                                <div><span class="font-semibold">School:</span> ${spell.school}</div>
+                                <div><span class="font-semibold">Casting Time:</span> ${spell.casting_time}</div>
+                                <div><span class="font-semibold">Range:</span> ${spell.range}</div>
+                                <div class="mt-2 text-xs text-gray-500 dark:text-gray-400 line-clamp-2">${spell.description.substring(0, 150)}...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            spellList.innerHTML = html;
+            updateSpellSelectionCount();
+        }
+
+        // Toggle spell checkbox when clicking the card
+        function toggleSpellCheckbox(checkbox) {
+            checkbox.checked = !checkbox.checked;
+            updateSpellSelectionCount();
+        }
+
+        // Update selected spell count
+        function updateSpellSelectionCount() {
+            const selectedCount = document.querySelectorAll('.spell-checkbox:checked').length;
+            const countElement = document.getElementById('selectedSpellCount');
+            const countElement2 = document.getElementById('selectedSpellCount2');
+            const addButton = document.getElementById('addSelectedSpellsBtn');
+
+            if (countElement) {
+                countElement.textContent = selectedCount;
+            }
+
+            if (countElement2) {
+                countElement2.textContent = selectedCount;
+            }
+
+            if (addButton) {
+                addButton.disabled = selectedCount === 0;
+                addButton.classList.toggle('opacity-50', selectedCount === 0);
+                addButton.classList.toggle('cursor-not-allowed', selectedCount === 0);
+            }
+        }
+
+        // Clear all spell selections
+        function clearAllSpellSelections() {
+            document.querySelectorAll('.spell-checkbox:checked').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            updateSpellSelectionCount();
+        }
+
+        // Add all selected spells to the creature form
+        function addSelectedSpells() {
+            const selectedCheckboxes = document.querySelectorAll('.spell-checkbox:checked');
+
+            if (selectedCheckboxes.length === 0) {
+                showNotification('Please select at least one spell', 'error');
+                return;
+            }
+
+            // Organize spells by level
+            const spellsByLevel = {
+                '0': [], // Cantrips
+                '1': [], '2': [], '3': [], '4': [], '5': [],
+                '6': [], '7': [], '8': [], '9': []
+            };
+
+            selectedCheckboxes.forEach(checkbox => {
+                const spellName = checkbox.dataset.spellName;
+                const spellLevel = checkbox.dataset.spellLevel;
+                spellsByLevel[spellLevel].push(spellName);
+            });
+
+            // Get current values from fields (to append, not replace)
+            const getCurrentSpells = (fieldId) => {
+                const field = document.getElementById(fieldId);
+                const current = field.value.trim();
+                return current ? current.split(',').map(s => s.trim()) : [];
+            };
+
+            // Auto-populate each level field
+            // Cantrips
+            if (spellsByLevel['0'].length > 0) {
+                const current = getCurrentSpells('spellCantrips');
+                const combined = [...new Set([...current, ...spellsByLevel['0']])]; // Remove duplicates
+                document.getElementById('spellCantrips').value = combined.join(', ');
+            }
+
+            // Leveled spells
+            const levels = [
+                {num: '1', id: 'spell1st', slotsId: 'spell1stSlots'},
+                {num: '2', id: 'spell2nd', slotsId: 'spell2ndSlots'},
+                {num: '3', id: 'spell3rd', slotsId: 'spell3rdSlots'},
+                {num: '4', id: 'spell4th', slotsId: 'spell4thSlots'},
+                {num: '5', id: 'spell5th', slotsId: 'spell5thSlots'},
+                {num: '6', id: 'spell6th', slotsId: 'spell6thSlots'},
+                {num: '7', id: 'spell7th', slotsId: 'spell7thSlots'},
+                {num: '8', id: 'spell8th', slotsId: 'spell8thSlots'},
+                {num: '9', id: 'spell9th', slotsId: 'spell9thSlots'}
+            ];
+
+            levels.forEach(level => {
+                if (spellsByLevel[level.num].length > 0) {
+                    const current = getCurrentSpells(level.id);
+                    const combined = [...new Set([...current, ...spellsByLevel[level.num]])]; // Remove duplicates
+                    document.getElementById(level.id).value = combined.join(', ');
+
+                    // Auto-suggest slot count if field is empty
+                    const slotsField = document.getElementById(level.slotsId);
+                    if (!slotsField.value) {
+                        // Suggest 2 slots as default
+                        slotsField.value = '2';
+                    }
+                }
+            });
+
+            // Show confirmation with visual feedback
+            showNotification(`✨ Added ${selectedCheckboxes.length} spell(s) to appropriate level fields!`, 'success');
+
+            // Clear selections and close modal
+            clearAllSpellSelections();
+            closeSpellSelector();
+        }
+
+        // Update visual spell list display (DEPRECATED in v1.3.6 - kept for compatibility)
+        function updateVisualSpellList(spellcastingText) {
+            // This function is no longer used in v1.3.6 with organized spell fields
+            // Kept for compatibility with older code that might call it
+            return;
+        }
+
+        // Remove spell from the list (DEPRECATED in v1.3.6 - kept for compatibility)
+        function removeSpellFromList(spellName) {
+            // This function is no longer used in v1.3.6 with organized spell fields
+            // Users can manually edit the spell fields to remove spells
+            return;
+        }
+
+        // Auto-fill spellcasting description (NEW v1.3.8)
+        function autoFillSpellcastingDescription() {
+            const casterLevel = document.getElementById('casterLevel').value;
+            const spellcastingAbility = document.getElementById('spellcastingAbility').value;
+
+            // Validate inputs
+            if (!casterLevel || !spellcastingAbility) {
+                showNotification('Please select both Caster Level and Spellcasting Ability', 'error');
+                return;
+            }
+
+            // Get ability score
+            const abilityMap = {
+                'Intelligence': 'creatureInt',
+                'Wisdom': 'creatureWis',
+                'Charisma': 'creatureCha'
+            };
+
+            const abilityFieldId = abilityMap[spellcastingAbility];
+            const abilityScore = parseInt(document.getElementById(abilityFieldId).value) || 10;
+
+            // Calculate ability modifier
+            const abilityModifier = Math.floor((abilityScore - 10) / 2);
+
+            // Calculate proficiency bonus based on caster level
+            const level = parseInt(casterLevel);
+            const proficiencyBonus = Math.ceil(level / 4) + 1; // Standard D&D proficiency progression
+
+            // Calculate spell save DC and to-hit
+            const spellSaveDC = 8 + proficiencyBonus + abilityModifier;
+            const toHitBonus = proficiencyBonus + abilityModifier;
+            const toHitStr = toHitBonus >= 0 ? `+${toHitBonus}` : `${toHitBonus}`;
+
+            // Build description text
+            const ordinalLevel = getOrdinalNumber(level);
+            const description = `The creature is a ${ordinalLevel}-level spellcaster. Its spellcasting ability is ${spellcastingAbility} (spell save DC ${spellSaveDC}, ${toHitStr} to hit with spell attacks).`;
+
+            // Set the description
+            document.getElementById('spellcastingHeader').value = description;
+
+            // Show success notification
+            showNotification('✨ Spellcasting description auto-filled!', 'success');
+        }
+
+        // Helper function to get ordinal numbers (1st, 2nd, 3rd, etc.)
+        function getOrdinalNumber(num) {
+            const n = parseInt(num);
+            if (n % 100 >= 11 && n % 100 <= 13) {
+                return n + 'th';
+            }
+            switch (n % 10) {
+                case 1: return n + 'st';
+                case 2: return n + 'nd';
+                case 3: return n + 'rd';
+                default: return n + 'th';
+            }
+        }
+
+        function filterSpells() {
+            const searchText = document.getElementById('spellSearchInput').value.toLowerCase();
+            const levelFilter = document.getElementById('spellLevelFilter').value;
+            const schoolFilter = document.getElementById('spellSchoolFilter').value;
+
+            // Combine all spells
+            const allSpells = convertSpellsToArray();
+
+            // Apply filters
+            const filtered = allSpells.filter(spell => {
+                const matchesSearch = spell.name.toLowerCase().includes(searchText) ||
+                                     spell.description.toLowerCase().includes(searchText);
+                const matchesLevel = levelFilter === '' || spell.level === levelFilter;
+                const matchesSchool = schoolFilter === '' || spell.school.toLowerCase() === schoolFilter.toLowerCase();
+
+                return matchesSearch && matchesLevel && matchesSchool;
+            });
+
+            renderSpellList(filtered);
+        }
+
+        function addSpellToForm(spellName) {
+            const spellcastingTextarea = document.getElementById('spellcasting');
+            const currentText = spellcastingTextarea.value;
+
+            // Find the spell details
+            const allSpells = convertSpellsToArray();
+            const spell = allSpells.find(s => s.name === spellName);
+
+            if (!spell) return;
+
+            // Format spell entry
+            const spellEntry = `${spell.name} (${spell.level === '0' ? 'Cantrip' : `Level ${spell.level}`}, ${spell.school}): ${spell.description}\n\n`;
+
+            // Add to spellcasting field
+            spellcastingTextarea.value = currentText + spellEntry;
+
+            // Show confirmation
+            showNotification(`Added "${spellName}" to spellcasting abilities!`, 'success');
+        }
+
+        function closeSpellSelector() {
+            document.getElementById('spellSelectorModal').classList.remove('active');
+        }
+
+        // ===== IMPORT/EXPORT FUNCTIONS (v1.2.6) =====
+        function exportCreature() {
+            // Get all form field values
+            const creatureData = {
+                name: document.getElementById('creature-name').value,
+                size: document.getElementById('size').value,
+                type: document.getElementById('type').value,
+                alignment: document.getElementById('alignment').value,
+                ac: document.getElementById('ac').value,
+                hp: document.getElementById('hp').value,
+                speed: document.getElementById('speed').value,
+                str: document.getElementById('str').value,
+                dex: document.getElementById('dex').value,
+                con: document.getElementById('con').value,
+                int: document.getElementById('int').value,
+                wis: document.getElementById('wis').value,
+                cha: document.getElementById('cha').value,
+                skills: document.getElementById('skills').value,
+                senses: document.getElementById('senses').value,
+                languages: document.getElementById('languages').value,
+                cr: document.getElementById('cr').value,
+                traits: document.getElementById('traits').value,
+                actions: document.getElementById('actions').value,
+                legendary_actions: document.getElementById('legendary_actions').value,
+                reactions: document.getElementById('reactions').value,
+                spellcasting: document.getElementById('spellcasting').value,
+                description: document.getElementById('description').value,
+                version: '1.2.3',
+                exportDate: new Date().toISOString()
+            };
+
+            // Validate that at least a name exists
+            if (!creatureData.name.trim()) {
+                showNotification('Please enter a creature name before exporting.', 'error');
+                return;
+            }
+
+            // Create JSON blob
+            const jsonStr = JSON.stringify(creatureData, null, 2);
+            const blob = new Blob([jsonStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+
+            // Create download link
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${creatureData.name.replace(/[^a-z0-9]/gi, '_').toLowerCase()}_creature.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            showNotification(`Exported "${creatureData.name}" successfully!`, 'success');
+        }
+
+        function importCreature() {
+            // Create file input element
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json,application/json';
+
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    try {
+                        const creatureData = JSON.parse(event.target.result);
+
+                        // Populate all form fields
+                        document.getElementById('creature-name').value = creatureData.name || '';
+                        document.getElementById('size').value = creatureData.size || 'Medium';
+                        document.getElementById('type').value = creatureData.type || 'humanoid';
+                        document.getElementById('alignment').value = creatureData.alignment || 'unaligned';
+                        document.getElementById('ac').value = creatureData.ac || '';
+                        document.getElementById('hp').value = creatureData.hp || '';
+                        document.getElementById('speed').value = creatureData.speed || '';
+                        document.getElementById('str').value = creatureData.str || '10';
+                        document.getElementById('dex').value = creatureData.dex || '10';
+                        document.getElementById('con').value = creatureData.con || '10';
+                        document.getElementById('int').value = creatureData.int || '10';
+                        document.getElementById('wis').value = creatureData.wis || '10';
+                        document.getElementById('cha').value = creatureData.cha || '10';
+                        document.getElementById('skills').value = creatureData.skills || '';
+                        document.getElementById('senses').value = creatureData.senses || '';
+                        document.getElementById('languages').value = creatureData.languages || '';
+                        document.getElementById('cr').value = creatureData.cr || '0';
+                        document.getElementById('traits').value = creatureData.traits || '';
+                        document.getElementById('actions').value = creatureData.actions || '';
+                        document.getElementById('legendary_actions').value = creatureData.legendary_actions || '';
+                        document.getElementById('reactions').value = creatureData.reactions || '';
+                        document.getElementById('spellcasting').value = creatureData.spellcasting || '';
+                        document.getElementById('description').value = creatureData.description || '';
+
+                        showNotification(`Successfully imported "${creatureData.name}"! You can now review and save this creature.`, 'success');
+
+                        // Scroll to top of form
+                        document.getElementById('custom-creature').scrollIntoView({ behavior: 'smooth' });
+
+                    } catch (error) {
+                        showNotification('Error reading file: Invalid JSON format. ' + error.message, 'error');
+                    }
+                };
+                reader.readAsText(file);
+            };
+
+            input.click();
+        }
+
+        // ===== IMPORT/EXPORT ALL CUSTOM CREATURES (v1.2.6) =====
+        function openImportExportModal() {
+            document.getElementById('importExportModal').classList.add('active');
+        }
+
+        function closeImportExportModal() {
+            document.getElementById('importExportModal').classList.remove('active');
+        }
+
+        function exportAllCustomCreatures() {
+            const count = Object.keys(customCreatures).length;
+
+            if (count === 0) {
+                showNotification('No custom creatures to export. Create some creatures first!', 'error');
+                return;
+            }
+
+            // Create export data with metadata
+            const exportData = {
+                version: '1.2.3',
+                exportDate: new Date().toISOString(),
+                creatureCount: count,
+                creatures: customCreatures
+            };
+
+            // Create JSON blob
+            const jsonStr = JSON.stringify(exportData, null, 2);
+            const blob = new Blob([jsonStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+
+            // Create download link
+            const a = document.createElement('a');
+            a.href = url;
+            const timestamp = new Date().toISOString().split('T')[0];
+            a.download = `custom_creatures_${timestamp}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            showNotification(`Exported ${count} custom creature(s) successfully!`, 'success');
+            closeImportExportModal();
+        }
+
+        function importAllCustomCreatures() {
+            // Create file input element
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json,application/json';
+
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    try {
+                        const importData = JSON.parse(event.target.result);
+
+                        // Handle both old format (direct object) and new format (with metadata)
+                        const creatures = importData.creatures || importData;
+
+                        if (typeof creatures !== 'object' || Array.isArray(creatures)) {
+                            showNotification('Invalid file format. Expected an object with creature data.', 'error');
+                            return;
+                        }
+
+                        // Count creatures to import
+                        const importCount = Object.keys(creatures).length;
+
+                        if (importCount === 0) {
+                            showNotification('No creatures found in the import file.', 'error');
+                            return;
+                        }
+
+                        // Merge with existing custom creatures
+                        let newCount = 0;
+                        let updatedCount = 0;
+
+                        for (const [name, data] of Object.entries(creatures)) {
+                            if (customCreatures[name]) {
+                                updatedCount++;
+                            } else {
+                                newCount++;
+                            }
+                            customCreatures[name] = data;
+                        }
+
+                        // Save to localStorage
+                        saveCustomCreatures();
+
+                        // Reload creatures and update display
+                        allCreatures = getAllCreatures();
+                        updateCounts();
+                        renderCreatures(allCreatures);
+
+                        // Show success message
+                        showNotification(
+                            `Import successful! ${newCount} new creature(s) added, ${updatedCount} creature(s) updated.`,
+                            'success'
+                        );
+
+                        closeImportExportModal();
+
+                    } catch (error) {
+                        showNotification('Error reading file: Invalid JSON format. ' + error.message, 'error');
+                    }
+                };
+                reader.readAsText(file);
+            };
+
+            input.click();
+        }
+    </script>
+
+    <!-- Battle Tabs System - Unlimited tabs with create/delete -->
+    <script src="battle-tabs.js"></script>
+
+    <!-- HP Tracker System - Current HP + Temporary HP tracking -->
+    <script src="hp-tracker.js"></script>
+
+    <!-- Mobile Back Button (for Capacitor apps) -->
+    <script src="mobile-back-button.js"></script>
+
+    <!-- Battle Tabs Fallback Initialization -->
+    <script>
+        // Ensure battle tabs render even if timing is off
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                if (typeof battleTabsManager !== 'undefined' && battleTabsManager) {
+                    const container = document.getElementById('battle-tabs-container');
+                    if (container && container.innerHTML.trim() === '') {
+                        console.log('🎮 Battle tabs container empty, rendering now...');
+                        battleTabsManager.renderBattleTabsUI();
+                    }
+                }
+            }, 500);
+        });
+    </script>
+</body>
+</html>
