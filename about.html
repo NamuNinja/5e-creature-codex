@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - 5e Creature Codex</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #5D5CDE 0%, #4a49b8 100%);
+            color: white;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .about-container {
+            text-align: center;
+            max-width: 350px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .version {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            font-size: 14px;
+            line-height: 1.6;
+            opacity: 0.95;
+            margin-bottom: 25px;
+        }
+
+        .credits {
+            font-size: 12px;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="about-container">
+        <div class="logo">🐉</div>
+        <h1>5e Creature Codex</h1>
+        <div class="version">Version 1.2.4 (Desktop Edition)</div>
+        <div class="description">
+            The complete creature reference for 5e 5th Edition.
+            Browse 322+ creatures from the System Reference Document with
+            powerful search and filtering capabilities.
+        </div>
+        <div class="credits">
+            <p><strong>Desktop Application</strong></p>
+            <p>Built with Electron</p>
+            <p style="margin-top: 15px; font-size: 11px;">
+                All content from the 5e 5th Edition System Reference Document (SRD)<br>
+                Released under the Open Game License (OGL)
+            </p>
+        </div>
+    </div>
+</body>
+</html>
