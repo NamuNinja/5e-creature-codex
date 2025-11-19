@@ -61,31 +61,8 @@
     <meta name="versioncode" content="7">
     <meta name="license" content="App: Copyright 2025 NamuNinja | Content: OGL 1.0a">
     <title>5e Creature Codex - v1.3.9</title>
-   <script src="https://cdn.jsdelivr.net/npm/tailwindcss-cdn@3.4.1/tailwindcss.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss-cdn@3.4.1/tailwindcss.js" crossorigin="anonymous"></script>
     <style>
-	/* AdSense Top Banner Styling */
-    .ad-container {
-        background: linear-gradient(to bottom, #f5f5f5, #ffffff);
-        border-bottom: 2px solid #5D5CDE;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-    }
-
-    /* Dark mode support */
-    .dark .ad-container {
-        background: linear-gradient(to bottom, #2D2D3D, #1a1a2e);
-        border-bottom: 2px solid #8B7CFF;
-    }
-
-    /* Responsive padding */
-    @media (max-width: 768px) {
-        .ad-container {
-            padding: 5px 0;
-        }
-    }
-
         /* Modal styling */
         .modal { display: none !important; }
         .modal.active { display: flex !important; }
@@ -177,29 +154,12 @@
     <script src="admob-config.js"></script>
     <script src="web-ads.js"></script>
     <script src="android-integration.js"></script>
-
-	<!-- Google AdSense -->
-
-	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9910832991526056"
-     crossorigin="anonymous"></script>
-
-
 </head>
 <body class="bg-white dark:bg-[#181818] text-gray-900 dark:text-gray-100 min-h-screen pb-20">
-
     <!-- Top Banner Ad -->
-
     <div id="bannerAd" class="banner-ad bg-gray-100 dark:bg-gray-900 flex items-center justify-center text-sm text-gray-500 dark:text-gray-400">
-        <!-- Google AdSense Banner -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-9910832991526056"
-             data-ad-slot="9722531674"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+        <!-- AdMob banner ad will be inserted here -->
+        <div class="py-3">Advertisement</div>
     </div>
 
     <!-- Import/Export ALL Creatures Button (NEW v1.2.6) -->
@@ -220,13 +180,26 @@
 
     <div class="container mx-auto px-4 py-8 max-w-7xl">
         <!-- Header -->
-        <header class="mb-8">
+        <header class="mb-6">
             <h1 class="text-4xl font-bold mb-2 text-[#5D5CDE]">5e Creature Codex</h1>
             <p class="text-gray-600 dark:text-gray-400">
                 <span id="totalCreatures"></span> total creatures (<span id="srdCount"></span> SRD + <span id="customCount"></span> custom) •
                 100% offline • <span class="text-xs bg-[#5D5CDE] text-white px-2 py-1 rounded">v1.3.9</span> •
                 <button onclick="showConditions()" class="text-xs text-[#5D5CDE] hover:underline cursor-pointer">📖 Conditions Reference</button>
             </p>
+
+            <!-- Subtle Top Navigation -->
+            <nav class="mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
+                <div class="flex flex-wrap justify-center gap-2 text-xs">
+                    <a href="tutorial.html" class="text-gray-600 dark:text-gray-400 hover:text-[#5D5CDE] dark:hover:text-[#7B7AED] transition">Tutorial</a>
+                    <span class="text-gray-300 dark:text-gray-600">•</span>
+                    <a href="faq.html" class="text-gray-600 dark:text-gray-400 hover:text-[#5D5CDE] dark:hover:text-[#7B7AED] transition">FAQ</a>
+                    <span class="text-gray-300 dark:text-gray-600">•</span>
+                    <a href="about.html" class="text-gray-600 dark:text-gray-400 hover:text-[#5D5CDE] dark:hover:text-[#7B7AED] transition">About</a>
+                    <span class="text-gray-300 dark:text-gray-600">•</span>
+                    <a href="OGL-LICENSE.html" class="text-gray-600 dark:text-gray-400 hover:text-[#5D5CDE] dark:hover:text-[#7B7AED] transition">License</a>
+                </div>
+            </nav>
         </header>
 
         <!-- Filters -->
@@ -315,21 +288,21 @@
                     <p class="text-xs text-gray-500 dark:text-gray-500 mt-2">🔒 Privacy: This app collects no personal information. All data is stored locally on your device. Ads are served by Google AdMob using family-safe, non-personalized advertising.</p>
                 </div>
 
-            <!-- Navigation Links -->
-            <nav class="mt-6 pt-4 border-t border-gray-300 dark:border-gray-600">
-                <p class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">Quick Links</p>
-                <div class="flex flex-wrap justify-center gap-3 text-sm">
-                    <a href="tutorial.html" class="text-[#5D5CDE] hover:text-[#7B7AED] hover:underline font-medium transition">📚 Tutorial</a>
-                    <span class="text-gray-400">|</span>
-                    <a href="faq.html" class="text-[#5D5CDE] hover:text-[#7B7AED] hover:underline font-medium transition">❓ FAQ</a>
-                    <span class="text-gray-400">|</span>
-                    <a href="about.html" class="text-[#5D5CDE] hover:text-[#7B7AED] hover:underline font-medium transition">ℹ️ About</a>
-                    <span class="text-gray-400">|</span>
-                    <a href="OGL-LICENSE.html" class="text-[#5D5CDE] hover:text-[#7B7AED] hover:underline font-medium transition">⚖️ License</a>
-                </div>
-            </nav>
+                <!-- Navigation Links -->
+                <nav class="mt-6 pt-4 border-t border-gray-300 dark:border-gray-600">
+                    <p class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">Quick Links</p>
+                    <div class="flex flex-wrap justify-center gap-3 text-sm">
+                        <a href="tutorial.html" class="text-[#5D5CDE] hover:text-[#7B7AED] hover:underline font-medium transition">📚 Tutorial</a>
+                        <span class="text-gray-400">|</span>
+                        <a href="faq.html" class="text-[#5D5CDE] hover:text-[#7B7AED] hover:underline font-medium transition">❓ FAQ</a>
+                        <span class="text-gray-400">|</span>
+                        <a href="about.html" class="text-[#5D5CDE] hover:text-[#7B7AED] hover:underline font-medium transition">ℹ️ About</a>
+                        <span class="text-gray-400">|</span>
+                        <a href="OGL-LICENSE.html" class="text-[#5D5CDE] hover:text-[#7B7AED] hover:underline font-medium transition">⚖️ License</a>
+                    </div>
+                </nav>
 
-                <p class="mt-4 text-gray-500 dark:text-gray-500">v1.3.9 • 100% Offline • OGL 1.0a Compliant • 322 SRD Creatures • 335 Spells • Action Indicators • Conditions • Ad Revenue→Extra Life</p>
+                <p class="mt-4 text-gray-500 dark:text-gray-500">v1.2.6 • 100% Offline • OGL 1.0a Compliant • 322 SRD Creatures • 335 Spells • Action Indicators • Conditions • Ad Revenue→Extra Life</p>
             </div>
         </footer>
     </div>
@@ -790,11 +763,11 @@
     </div>
 
     <!-- Import/Export ALL Creatures Modal (NEW v1.2.6) -->
-    <div id="importExportModal" class="modal fixed inset-0 bg-black bg-opacity-75 items-center justify-center z-50 p-4">
-        <div class="bg-white dark:bg-gray-800 rounded-lg max-w-md w-full shadow-2xl">
-            <div class="p-6 border-b dark:border-gray-700">
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Import/Export Custom Creatures</h2>
-                <button onclick="closeImportExportModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-3xl font-bold">&times;</button>
+    <div id="importExportModal" class="modal fixed inset-0 bg-black bg-opacity-75 items-center justify-center z-50 p-4" onclick="closeImportExportModal()">
+        <div class="bg-white dark:bg-gray-800 rounded-lg max-w-md w-full shadow-2xl relative" onclick="event.stopPropagation()">
+            <div class="p-6 border-b dark:border-gray-700 relative">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white pr-10">Import/Export Custom Creatures</h2>
+                <button onclick="closeImportExportModal()" class="absolute top-3 right-3 w-10 h-10 flex items-center justify-center bg-red-500 hover:bg-red-600 text-white rounded-full font-bold text-xl shadow-lg transition-all hover:scale-110" title="Close" aria-label="Close modal">&times;</button>
             </div>
             <div class="p-6 space-y-4">
                 <p class="text-gray-600 dark:text-gray-400">Choose an action for all custom creatures:</p>
