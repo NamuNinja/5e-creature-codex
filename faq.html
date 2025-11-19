@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Frequently Asked Questions about 5E Creature Codex - Your ultimate D&D 5th Edition creature reference tool">
+    <title>FAQ - 5E Creature Codex</title>
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss-cdn@3.4.1/tailwindcss.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #5D5CDE 0%, #2D2D3D 100%);
+            min-height: 100vh;
+        }
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover {
+            transform: translateY(-2px);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .faq-answer.active {
+            max-height: 500px;
+        }
+    </style>
+</head>
+<body class="text-gray-100">
+    <!-- Header -->
+    <header class="bg-gray-900 bg-opacity-90 shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <svg class="w-10 h-10 text-yellow-400" viewBox="0 0 100 100">
+                        <polygon points="50,10 90,35 75,85 25,85 10,35" fill="currentColor" stroke="#2D2D3D" stroke-width="3"/>
+                        <text x="50" y="65" text-anchor="middle" fill="#2D2D3D" font-size="40" font-weight="bold">20</text>
+                    </svg>
+                    <h1 class="text-2xl md:text-3xl font-bold text-yellow-400">5E Creature Codex</h1>
+                </div>
+                <nav class="flex space-x-4">
+                    <a href="index.html" class="text-gray-300 hover:text-yellow-400 transition">Home</a>
+                    <a href="tutorial.html" class="text-gray-300 hover:text-yellow-400 transition">Tutorial</a>
+                    <a href="about.html" class="text-gray-300 hover:text-yellow-400 transition">About</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-12">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold text-yellow-400 mb-4">Frequently Asked Questions</h2>
+            <p class="text-xl text-gray-300">Everything you need to know about 5E Creature Codex</p>
+        </div>
+
+        <!-- FAQ Categories -->
+        <div class="space-y-6">
+            <!-- General Questions -->
+            <div class="bg-gray-900 bg-opacity-70 rounded-lg p-6 shadow-xl">
+                <h3 class="text-2xl font-bold text-yellow-400 mb-6 border-b border-yellow-400 pb-2">General Questions</h3>
+
+                <div class="space-y-4">
+                    <!-- Q1 -->
+                    <div class="faq-item bg-gray-800 rounded-lg p-4 cursor-pointer" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h4 class="text-lg font-semibold text-white">What is 5E Creature Codex?</h4>
+                            <svg class="w-6 h-6 text-yellow-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        <div class="faq-answer mt-4 text-gray-300">
+                            <p>5E Creature Codex is a comprehensive reference tool for Dungeons & Dragons 5th Edition creatures. It contains 322+ creatures from the SRD 5.1, allowing you to quickly search, filter, and reference creature stats during your game sessions.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="faq-item bg-gray-800 rounded-lg p-4 cursor-pointer" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h4 class="text-lg font-semibold text-white">Is this free to use?</h4>
+                            <svg class="w-6 h-6 text-yellow-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        <div class="faq-answer mt-4 text-gray-300">
+                            <p>Yes! 5E Creature Codex is completely free to use on both web and mobile platforms. Web advertising helps cover hosting and infrastructure costs, while 100% of advertising revenue from the mobile app is donated to Extra Life (Children's Miracle Network Hospitals).</p>
+                        </div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="faq-item bg-gray-800 rounded-lg p-4 cursor-pointer" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h4 class="text-lg font-semibold text-white">What platforms is this available on?</h4>
+                            <svg class="w-6 h-6 text-yellow-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        <div class="faq-answer mt-4 text-gray-300">
+                            <p>5E Creature Codex is available on:</p>
+                            <ul class="list-disc ml-6 mt-2 space-y-1">
+                                <li><strong>Web:</strong> Access at 5e-creature-codex.org from any browser</li>
+                                <li><strong>Android:</strong> Coming Soon!</li>
+                                <li><strong>iOS:</strong> Coming soon!</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features & Usage -->
+            <div class="bg-gray-900 bg-opacity-70 rounded-lg p-6 shadow-xl">
+                <h3 class="text-2xl font-bold text-yellow-400 mb-6 border-b border-yellow-400 pb-2">Features & Usage</h3>
+
+                <div class="space-y-4">
+                    <!-- Q4 -->
+                    <div class="faq-item bg-gray-800 rounded-lg p-4 cursor-pointer" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h4 class="text-lg font-semibold text-white">Can I add my own custom creatures?</h4>
+                            <svg class="w-6 h-6 text-yellow-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        <div class="faq-answer mt-4 text-gray-300">
+                            <p>Yes! You can create custom creatures with the "+ Add Creature" button (bottom right corner). All custom creatures are saved locally in your browser and marked with a purple "CUSTOM" badge to distinguish them from SRD creatures.</p>
+                            <p class="mt-3"><strong>⚠️ Important:</strong> Always backup your custom creatures using the Import/Export feature (bottom right corner). If you clear your browser data or cache, you will lose all custom creatures permanently.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q5 -->
+                    <div class="faq-item bg-gray-800 rounded-lg p-4 cursor-pointer" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h4 class="text-lg font-semibold text-white">How do the Battle Preparation Tabs work?</h4>
+                            <svg class="w-6 h-6 text-yellow-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        <div class="faq-answer mt-4 text-gray-300">
+                            <p>Battle Preparation Tabs allow you to track multiple creatures' hit points during combat. Open a creature card and click "Add To Battle Tab" to add it to your battle tracker. You can then apply damage, healing, and even track temporary HP. All tracked creatures persist until you manually remove them or clear all.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q6 -->
+                    <div class="faq-item bg-gray-800 rounded-lg p-4 cursor-pointer" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h4 class="text-lg font-semibold text-white">How do I filter creatures?</h4>
+                            <svg class="w-6 h-6 text-yellow-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        <div class="faq-answer mt-4 text-gray-300">
+                            <p>Use the filter buttons to narrow down creatures by:</p>
+                            <ul class="list-disc ml-6 mt-2 space-y-1">
+                                <li><strong>Challenge Rating (CR):</strong> Filter by difficulty level</li>
+                                <li><strong>Type:</strong> Filter by creature type (beast, dragon, undead, etc.)</li>
+                                <li><strong>Search:</strong> Search by name or description</li>
+                                <li><strong>Custom toggle:</strong> Show only custom creatures or only SRD creatures</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Q7 -->
+                    <div class="faq-item bg-gray-800 rounded-lg p-4 cursor-pointer" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h4 class="text-lg font-semibold text-white">Does this work offline?</h4>
+                            <svg class="w-6 h-6 text-yellow-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        <div class="faq-answer mt-4 text-gray-300">
+                            <p>The mobile app works fully offline once loaded. The website requires an internet connection to load initially, but all creature data is loaded in your browser, so you can browse creatures without additional data usage after the initial page load.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Legal & Licensing -->
+            <div class="bg-gray-900 bg-opacity-70 rounded-lg p-6 shadow-xl">
+                <h3 class="text-2xl font-bold text-yellow-400 mb-6 border-b border-yellow-400 pb-2">Legal & Licensing</h3>
+
+                <div class="space-y-4">
+                    <!-- Q8 -->
+                    <div class="faq-item bg-gray-800 rounded-lg p-4 cursor-pointer" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h4 class="text-lg font-semibold text-white">Is this official D&D content?</h4>
+                            <svg class="w-6 h-6 text-yellow-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        <div class="faq-answer mt-4 text-gray-300">
+                            <p>No. This is a third-party reference tool created under the Open Game License (OGL 1.0a). All creature statistics and game mechanics are from the Systems Reference Document (SRD) 5.1, which is Open Game Content. The application code and design are original work by NamuNinja.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q9 -->
+                    <div class="faq-item bg-gray-800 rounded-lg p-4 cursor-pointer" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h4 class="text-lg font-semibold text-white">What is the Open Game License?</h4>
+                            <svg class="w-6 h-6 text-yellow-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        <div class="faq-answer mt-4 text-gray-300">
+                            <p>The Open Game License (OGL) is a public copyright license published by Wizards of the Coast. It allows creators to use certain D&D game mechanics and content from the System Reference Document. All creature stats in this app come from SRD 5.1 and comply with OGL 1.0a. <a href="OGL-LICENSE.html" class="text-yellow-400 hover:underline">View full OGL license</a></p>
+                        </div>
+                    </div>
+
+                    <!-- Q10 -->
+                    <div class="faq-item bg-gray-800 rounded-lg p-4 cursor-pointer" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h4 class="text-lg font-semibold text-white">Where does the ad revenue go?</h4>
+                            <svg class="w-6 h-6 text-yellow-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        <div class="faq-answer mt-4 text-gray-300">
+                            <p>100% of advertising revenue from the mobile application is donated to <strong>Extra Life</strong>, a charity that supports Children's Miracle Network Hospitals. Web advertising helps cover hosting and infrastructure costs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Support -->
+            <div class="bg-gray-900 bg-opacity-70 rounded-lg p-6 shadow-xl">
+                <h3 class="text-2xl font-bold text-yellow-400 mb-6 border-b border-yellow-400 pb-2">Technical Support</h3>
+
+                <div class="space-y-4">
+                    <!-- Q11 -->
+                    <div class="faq-item bg-gray-800 rounded-lg p-4 cursor-pointer" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h4 class="text-lg font-semibold text-white">My data isn't saving. What's wrong?</h4>
+                            <svg class="w-6 h-6 text-yellow-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        <div class="faq-answer mt-4 text-gray-300">
+                            <p>Custom creatures and HP tracker data are saved to your browser's local storage. If data isn't saving:</p>
+                            <ul class="list-disc ml-6 mt-2 space-y-1">
+                                <li>Make sure you're not in private/incognito mode</li>
+                                <li>Check that cookies and local storage are enabled</li>
+                                <li>Try clearing your browser cache and reloading</li>
+                                <li>On mobile, ensure the app has storage permissions</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Q12 -->
+                    <div class="faq-item bg-gray-800 rounded-lg p-4 cursor-pointer" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h4 class="text-lg font-semibold text-white">The app isn't loading properly. Help!</h4>
+                            <svg class="w-6 h-6 text-yellow-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        <div class="faq-answer mt-4 text-gray-300">
+                            <p>Try these troubleshooting steps:</p>
+                            <ul class="list-disc ml-6 mt-2 space-y-1">
+                                <li><strong>Web:</strong> Clear browser cache, refresh page (Ctrl+F5 or Cmd+Shift+R)</li>
+                                <li><strong>Mobile:</strong> Force close app, clear app cache, restart device</li>
+                                <li><strong>Update:</strong> Make sure you have the latest version</li>
+                                <li><strong>Browser:</strong> Try a different browser (Chrome, Firefox, Safari)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Q13 -->
+                    <div class="faq-item bg-gray-800 rounded-lg p-4 cursor-pointer" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h4 class="text-lg font-semibold text-white">I found a bug. How do I report it?</h4>
+                            <svg class="w-6 h-6 text-yellow-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        <div class="faq-answer mt-4 text-gray-300">
+                            <p>We appreciate bug reports! Please include:</p>
+                            <ul class="list-disc ml-6 mt-2 space-y-1">
+                                <li>Platform (web, Android, iOS)</li>
+                                <li>Browser/device type</li>
+                                <li>Steps to reproduce the issue</li>
+                                <li>What you expected vs. what happened</li>
+                                <li>Screenshots if applicable</li>
+                            </ul>
+                            <p class="mt-2">Contact: <a href="/cdn-cgi/l/email-protection#2e404f435b404740444f6e49434f4742004d4143" class="text-yellow-400 hover:underline"><span class="__cf_email__" data-cfemail="9df3fcf0e8f3f4f3f7fcddfaf0fcf4f1b3fef2f0">[email&#160;protected]</span></a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Still Have Questions? -->
+        <div class="mt-12 text-center bg-gray-900 bg-opacity-70 rounded-lg p-8 shadow-xl">
+            <h3 class="text-2xl font-bold text-yellow-400 mb-4">Still Have Questions?</h3>
+            <p class="text-gray-300 mb-6">Check out our <a href="tutorial.html" class="text-yellow-400 hover:underline">Tutorial page</a> for detailed how-to guides, or visit the <a href="about.html" class="text-yellow-400 hover:underline">About page</a> to learn more about the project.</p>
+            <a href="index.html" class="inline-block bg-yellow-400 text-gray-900 px-8 py-3 rounded-lg font-bold hover:bg-yellow-500 transition transform hover:scale-105">
+                Back to App
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 bg-opacity-90 mt-16 py-8">
+        <div class="max-w-6xl mx-auto px-4 text-center text-gray-400">
+            <p class="mb-2">5E Creature Codex v1.3.9 | Created by NamuNinja</p>
+            <p class="text-sm">App Code & Design © 2025 NamuNinja | Game Content © Wizards of the Coast LLC (OGL 1.0a)</p>
+            <p class="text-sm mt-2">
+                <a href="OGL-LICENSE.html" class="text-yellow-400 hover:underline">OGL License</a> |
+                <a href="about.html" class="text-yellow-400 hover:underline">About</a> |
+                <a href="faq.html" class="text-yellow-400 hover:underline">FAQ</a>
+            </p>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        function toggleFAQ(element) {
+            const answer = element.querySelector('.faq-answer');
+            const arrow = element.querySelector('svg');
+
+            // Close all other FAQs
+            document.querySelectorAll('.faq-answer').forEach(a => {
+                if (a !== answer) {
+                    a.classList.remove('active');
+                }
+            });
+            document.querySelectorAll('.faq-item svg').forEach(s => {
+                if (s !== arrow) {
+                    s.classList.remove('rotate-180');
+                }
+            });
+
+            // Toggle current FAQ
+            answer.classList.toggle('active');
+            arrow.classList.toggle('rotate-180');
+        }
+    </script>
+</body>
+</html>

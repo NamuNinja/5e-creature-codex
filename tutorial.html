@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn how to use 5E Creature Codex - Complete tutorials and guides for all features">
+    <title>Tutorial - 5E Creature Codex</title>
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss-cdn@3.4.1/tailwindcss.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #5D5CDE 0%, #2D2D3D 100%);
+            min-height: 100vh;
+        }
+        .tutorial-card {
+            transition: all 0.3s ease;
+        }
+        .tutorial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+        }
+        .step-number {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #2D2D3D;
+            font-weight: bold;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body class="text-gray-100">
+    <!-- Header -->
+    <header class="bg-gray-900 bg-opacity-90 shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <svg class="w-10 h-10 text-yellow-400" viewBox="0 0 100 100">
+                        <polygon points="50,10 90,35 75,85 25,85 10,35" fill="currentColor" stroke="#2D2D3D" stroke-width="3"/>
+                        <text x="50" y="65" text-anchor="middle" fill="#2D2D3D" font-size="40" font-weight="bold">20</text>
+                    </svg>
+                    <h1 class="text-2xl md:text-3xl font-bold text-yellow-400">5E Creature Codex</h1>
+                </div>
+                <nav class="flex space-x-4">
+                    <a href="index.html" class="text-gray-300 hover:text-yellow-400 transition">Home</a>
+                    <a href="faq.html" class="text-gray-300 hover:text-yellow-400 transition">FAQ</a>
+                    <a href="about.html" class="text-gray-300 hover:text-yellow-400 transition">About</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-12">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold text-yellow-400 mb-4">How to Use 5E Creature Codex</h2>
+            <p class="text-xl text-gray-300">Master all the features with these step-by-step guides</p>
+        </div>
+
+        <!-- Quick Start Guide -->
+        <div class="bg-gray-900 bg-opacity-70 rounded-lg p-8 shadow-xl mb-8">
+            <h3 class="text-3xl font-bold text-yellow-400 mb-6 text-center">🚀 Quick Start Guide</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="text-center">
+                    <div class="bg-yellow-400 text-gray-900 rounded-full w-16 h-16 flex items-center justify-center text-3xl font-bold mx-auto mb-4">1</div>
+                    <h4 class="text-xl font-bold text-white mb-2">Browse Creatures</h4>
+                    <p class="text-gray-300">Scroll through 322+ creatures from D&D 5E SRD</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-yellow-400 text-gray-900 rounded-full w-16 h-16 flex items-center justify-center text-3xl font-bold mx-auto mb-4">2</div>
+                    <h4 class="text-xl font-bold text-white mb-2">View Details</h4>
+                    <p class="text-gray-300">Click any creature to see full stat block</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-yellow-400 text-gray-900 rounded-full w-16 h-16 flex items-center justify-center text-3xl font-bold mx-auto mb-4">3</div>
+                    <h4 class="text-xl font-bold text-white mb-2">Track Combat</h4>
+                    <p class="text-gray-300">Use HP Tracker for battle management</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tutorial Sections -->
+        <div class="space-y-8">
+            <!-- Searching & Filtering -->
+            <div class="tutorial-card bg-gray-900 bg-opacity-70 rounded-lg p-8 shadow-xl">
+                <h3 class="text-2xl font-bold text-yellow-400 mb-6 border-b border-yellow-400 pb-3">🔍 Searching & Filtering Creatures</h3>
+
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="step-number">1</div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-white mb-2">Use the Search Bar</h4>
+                            <p class="text-gray-300">Type any part of a creature's name in the search box at the top. Results update instantly as you type.</p>
+                            <div class="bg-gray-800 p-3 rounded mt-2 text-sm text-gray-400">
+                                Example: Type "dragon" to see all dragons, or "anc" to find ancient creatures
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="step-number">2</div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-white mb-2">Filter by Challenge Rating (CR)</h4>
+                            <p class="text-gray-300">Click the CR filter buttons to show only creatures within specific difficulty ranges:</p>
+                            <ul class="list-disc ml-6 mt-2 text-gray-300 space-y-1">
+                                <li><strong>CR 0-4:</strong> Low-level encounters</li>
+                                <li><strong>CR 5-10:</strong> Mid-tier challenges</li>
+                                <li><strong>CR 11-16:</strong> High-level threats</li>
+                                <li><strong>CR 17+:</strong> Epic encounters</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="step-number">3</div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-white mb-2">Filter by Creature Type</h4>
+                            <p class="text-gray-300">Select from dropdown to filter by type: Beast, Dragon, Undead, Humanoid, Aberration, etc.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="step-number">4</div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-white mb-2">Toggle Custom Creatures</h4>
+                            <p class="text-gray-300">Use the "Show Custom Only" toggle to view only your custom-created creatures, or turn it off to see SRD creatures.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="step-number">5</div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-white mb-2">Combine Filters</h4>
+                            <p class="text-gray-300">Use multiple filters together! Search for "dragon" + CR 17+ to find only ancient dragons.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Viewing Creature Details -->
+            <div class="tutorial-card bg-gray-900 bg-opacity-70 rounded-lg p-8 shadow-xl">
+                <h3 class="text-2xl font-bold text-yellow-400 mb-6 border-b border-yellow-400 pb-3">📖 Viewing Creature Details</h3>
+
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="step-number">1</div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-white mb-2">Open Creature Modal</h4>
+                            <p class="text-gray-300">Click on any creature card to open the detailed stat block in a modal window.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="step-number">2</div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-white mb-2">Read the Stat Block</h4>
+                            <p class="text-gray-300">The modal displays all creature information:</p>
+                            <ul class="list-disc ml-6 mt-2 text-gray-300 space-y-1">
+                                <li>Size, Type, Alignment</li>
+                                <li>Armor Class (AC) and Hit Points (HP)</li>
+                                <li>Speed (walking, flying, swimming, etc.)</li>
+                                <li>Ability Scores (STR, DEX, CON, INT, WIS, CHA)</li>
+                                <li>Saving Throws and Skills</li>
+                                <li>Damage Resistances, Immunities, Vulnerabilities</li>
+                                <li>Senses and Languages</li>
+                                <li>Special Abilities</li>
+                                <li>Actions and Legendary Actions</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="step-number">3</div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-white mb-2">Add to Battle Preparation</h4>
+                            <p class="text-gray-300">Use the "Battle Preparation Tabs" feature to add this creature to combat tracking and HP management.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="step-number">4</div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-white mb-2">Close Modal</h4>
+                            <p class="text-gray-300">Click the X button at the top right of the modal to close it.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Battle Preparation Tabs -->
+            <div class="tutorial-card bg-gray-900 bg-opacity-70 rounded-lg p-8 shadow-xl">
+                <h3 class="text-2xl font-bold text-yellow-400 mb-6 border-b border-yellow-400 pb-3">❤️ Using Battle Preparation Tabs</h3>
+
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="step-number">1</div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-white mb-2">Open Desired Creature Card</h4>
+                            <p class="text-gray-300">Click the creature card you wish to add to the battle tabs section to access HP tracking and combat management.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="step-number">2</div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-white mb-2">Add Creatures to Track</h4>
+                            <p class="text-gray-300">Click the "Add To Battle Tab" button at the top of the creature card to add it to your battle tracker.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="step-number">3</div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-white mb-2">Apply Damage</h4>
+                            <p class="text-gray-300">For each tracked creature:</p>
+                            <ul class="list-disc ml-6 mt-2 text-gray-300 space-y-1">
+                                <li>Click the red "Damage" button</li>
+                                <li>Enter damage amount</li>
+                                <li>HP automatically decreases</li>
+                                <li>Progress bar updates to show remaining HP</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="step-number">4</div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-white mb-2">Apply Healing</h4>
+                            <p class="text-gray-300">Click the green "Heal" button and enter healing amount. HP cannot exceed maximum.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="step-number">5</div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-white mb-2">Add Temporary HP</h4>
+                            <p class="text-gray-300">Click "Temp HP" button to add temporary hit points. Damage is applied to temp HP first.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="step-number">6</div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-white mb-2">Reset or Remove</h4>
+                            <p class="text-gray-300">Options for managing tracked creatures:</p>
+                            <ul class="list-disc ml-6 mt-2 text-gray-300 space-y-1">
+                                <li><strong>Reset HP:</strong> Restores creature to full HP</li>
+                                <li><strong>Remove:</strong> Removes creature from tracker</li>
+                                <li><strong>Clear All:</strong> Removes all tracked creatures</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-yellow-900 bg-opacity-30 border-l-4 border-yellow-400 p-4 mt-4">
+                        <p class="text-yellow-200"><strong>💡 Pro Tip:</strong> Battle Preparation data is automatically saved to your browser, so you can close and reopen the app without losing your combat progress!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Creating Custom Creatures -->
+            <div class="tutorial-card bg-gray-900 bg-opacity-70 rounded-lg p-8 shadow-xl">
+                <h3 class="text-2xl font-bold text-yellow-400 mb-6 border-b border-yellow-400 pb-3">✨ Creating Custom Creatures</h3>
+
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="step-number">1</div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-white mb-2">Click "+ Add Creature"</h4>
+                            <p class="text-gray-300">Find the "+ Add Creature" button at the bottom right corner of the screen (both mobile and desktop).</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="step-number">2</div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-white mb-2">Fill in Basic Info</h4>
+                            <p class="text-gray-300">Enter creature's basic statistics:</p>
+                            <ul class="list-disc ml-6 mt-2 text-gray-300 space-y-1">
+                                <li>Name (required)</li>
+                                <li>Type (beast, humanoid, etc.)</li>
+                                <li>Size (tiny, small, medium, large, huge, gargantuan)</li>
+                                <li>Alignment</li>
+                                <li>Challenge Rating (CR)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="step-number">3</div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-white mb-2">Add Combat Stats</h4>
+                            <p class="text-gray-300">Enter:</p>
+                            <ul class="list-disc ml-6 mt-2 text-gray-300 space-y-1">
+                                <li>Armor Class (AC)</li>
+                                <li>Hit Points (HP)</li>
+                                <li>Speed</li>
+                                <li>Ability Scores (STR, DEX, CON, INT, WIS, CHA)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="step-number">4</div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-white mb-2">Add Abilities & Actions</h4>
+                            <p class="text-gray-300">Use the text areas to describe special abilities, actions, and legendary actions.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="step-number">5</div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-white mb-2">Save Your Creature</h4>
+                            <p class="text-gray-300">Click "Save" to add the creature. It will appear with a purple "CUSTOM" badge.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="step-number">6</div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-white mb-2">Edit or Delete</h4>
+                            <p class="text-gray-300">Open a custom creature's detail modal to find Edit and Delete buttons.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-purple-900 bg-opacity-30 border-l-4 border-purple-400 p-4 mt-4">
+                        <p class="text-purple-200"><strong>💡 Note:</strong> Custom creatures are saved locally to your browser/device. They won't sync across different devices or browsers.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Back to App -->
+        <div class="mt-12 text-center bg-gray-900 bg-opacity-70 rounded-lg p-8 shadow-xl">
+            <h3 class="text-2xl font-bold text-yellow-400 mb-4">Ready to Get Started?</h3>
+            <p class="text-gray-300 mb-6">Have questions? Check out our <a href="faq.html" class="text-yellow-400 hover:underline">FAQ page</a></p>
+            <a href="index.html" class="inline-block bg-yellow-400 text-gray-900 px-8 py-3 rounded-lg font-bold hover:bg-yellow-500 transition transform hover:scale-105">
+                Launch 5E Creature Codex
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 bg-opacity-90 mt-16 py-8">
+        <div class="max-w-6xl mx-auto px-4 text-center text-gray-400">
+            <p class="mb-2">5E Creature Codex v1.3.9 | Created by NamuNinja</p>
+            <p class="text-sm">App Code & Design © 2025 NamuNinja | Game Content © Wizards of the Coast LLC (OGL 1.0a)</p>
+            <p class="text-sm mt-2">
+                <a href="OGL-LICENSE.html" class="text-yellow-400 hover:underline">OGL License</a> |
+                <a href="about.html" class="text-yellow-400 hover:underline">About</a> |
+                <a href="faq.html" class="text-yellow-400 hover:underline">FAQ</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

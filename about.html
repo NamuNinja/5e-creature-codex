@@ -3,87 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - 5e Creature Codex</title>
+    <meta name="description" content="About 5E Creature Codex - Learn about the project, creator, and mission">
+    <title>About - 5E Creature Codex</title>
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss-cdn@3.4.1/tailwindcss.js" crossorigin="anonymous"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #5D5CDE 0%, #4a49b8 100%);
-            color: white;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            background: linear-gradient(135deg, #5D5CDE 0%, #2D2D3D 100%);
             min-height: 100vh;
         }
-
-        .about-container {
-            text-align: center;
-            max-width: 350px;
+        .feature-card {
+            transition: all 0.3s ease;
         }
-
-        h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .version {
-            font-size: 14px;
-            opacity: 0.9;
-            margin-bottom: 20px;
-        }
-
-        .description {
-            font-size: 14px;
-            line-height: 1.6;
-            opacity: 0.95;
-            margin-bottom: 25px;
-        }
-
-        .credits {
-            font-size: 12px;
-            opacity: 0.8;
-            line-height: 1.5;
-        }
-
-        .logo {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
         }
     </style>
 </head>
-<body>
-    <div class="about-container">
-        <div class="logo">🐉</div>
-        <h1>5e Creature Codex</h1>
-        <div class="version">Version 1.2.4 (Desktop Edition)</div>
-        <div class="description">
-            The complete creature reference for 5e 5th Edition.
-            Browse 322+ creatures from the System Reference Document with
-            powerful search and filtering capabilities.
+<body class="text-gray-100">
+    <!-- Header -->
+    <header class="bg-gray-900 bg-opacity-90 shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <svg class="w-10 h-10 text-yellow-400" viewBox="0 0 100 100">
+                        <polygon points="50,10 90,35 75,85 25,85 10,35" fill="currentColor" stroke="#2D2D3D" stroke-width="3"/>
+                        <text x="50" y="65" text-anchor="middle" fill="#2D2D3D" font-size="40" font-weight="bold">20</text>
+                    </svg>
+                    <h1 class="text-2xl md:text-3xl font-bold text-yellow-400">5E Creature Codex</h1>
+                </div>
+                <nav class="flex space-x-4">
+                    <a href="index.html" class="text-gray-300 hover:text-yellow-400 transition">Home</a>
+                    <a href="tutorial.html" class="text-gray-300 hover:text-yellow-400 transition">Tutorial</a>
+                    <a href="faq.html" class="text-gray-300 hover:text-yellow-400 transition">FAQ</a>
+                </nav>
+            </div>
         </div>
-        <div class="credits">
-            <p><strong>Desktop Application</strong></p>
-            <p>Built with Electron</p>
-            <p style="margin-top: 15px; font-size: 11px;">
-                All content from the 5e 5th Edition System Reference Document (SRD)<br>
-                Released under the Open Game License (OGL)
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-12">
+        <!-- Hero Section -->
+        <div class="text-center mb-16">
+            <svg class="w-24 h-24 mx-auto mb-6 text-yellow-400" viewBox="0 0 100 100">
+                <polygon points="50,10 90,35 75,85 25,85 10,35" fill="currentColor" stroke="#2D2D3D" stroke-width="3"/>
+                <text x="50" y="65" text-anchor="middle" fill="#2D2D3D" font-size="40" font-weight="bold">20</text>
+            </svg>
+            <h2 class="text-4xl md:text-5xl font-bold text-yellow-400 mb-4">About 5E Creature Codex</h2>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">Your ultimate companion for Dungeons & Dragons 5th Edition creature reference and combat management</p>
+        </div>
+
+        <!-- Mission Statement -->
+        <div class="bg-gray-900 bg-opacity-70 rounded-lg p-8 shadow-xl mb-8">
+            <h3 class="text-3xl font-bold text-yellow-400 mb-6 text-center">Our Mission</h3>
+            <p class="text-lg text-gray-300 text-center max-w-4xl mx-auto leading-relaxed">
+                5E Creature Codex was created to provide Dungeon Masters and players with a fast, free, and accessible way to reference D&D 5E creatures during gameplay. We believe that better tools lead to better games, and everyone should have access to quality resources regardless of budget.
             </p>
         </div>
-    </div>
+
+        <!-- Key Features -->
+        <div class="mb-12">
+            <h3 class="text-3xl font-bold text-yellow-400 mb-8 text-center">What Makes Us Special</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-gray-900 bg-opacity-70 rounded-lg p-6 shadow-xl">
+                    <div class="text-yellow-400 text-4xl mb-4">📚</div>
+                    <h4 class="text-xl font-bold text-white mb-3">Complete SRD 5.1</h4>
+                    <p class="text-gray-300">All 322+ creatures from the official System Reference Document 5.1, fully compliant with the Open Game License.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card bg-gray-900 bg-opacity-70 rounded-lg p-6 shadow-xl">
+                    <div class="text-yellow-400 text-4xl mb-4">🎯</div>
+                    <h4 class="text-xl font-bold text-white mb-3">Powerful Filtering</h4>
+                    <p class="text-gray-300">Search and filter by name, CR, type, and more. Find the perfect creature for your encounter in seconds.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card bg-gray-900 bg-opacity-70 rounded-lg p-6 shadow-xl">
+                    <div class="text-yellow-400 text-4xl mb-4">❤️</div>
+                    <h4 class="text-xl font-bold text-white mb-3">HP Tracker</h4>
+                    <p class="text-gray-300">Track multiple creatures' hit points during combat with damage, healing, and temporary HP support.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card bg-gray-900 bg-opacity-70 rounded-lg p-6 shadow-xl">
+                    <div class="text-yellow-400 text-4xl mb-4">✨</div>
+                    <h4 class="text-xl font-bold text-white mb-3">Custom Creatures</h4>
+                    <p class="text-gray-300">Create and save your own homebrew creatures with the same stat block format as official content.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-card bg-gray-900 bg-opacity-70 rounded-lg p-6 shadow-xl">
+                    <div class="text-yellow-400 text-4xl mb-4">📱</div>
+                    <h4 class="text-xl font-bold text-white mb-3">Cross-Platform</h4>
+                    <p class="text-gray-300">Available as a web app and mobile app for Android (iOS coming soon). Access anywhere, anytime.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="feature-card bg-gray-900 bg-opacity-70 rounded-lg p-6 shadow-xl">
+                    <div class="text-yellow-400 text-4xl mb-4">🌙</div>
+                    <h4 class="text-xl font-bold text-white mb-3">Dark Mode</h4>
+                    <p class="text-gray-300">Eye-friendly dark theme perfect for late-night gaming sessions.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Creator -->
+        <div class="bg-gray-900 bg-opacity-70 rounded-lg p-8 shadow-xl mb-8">
+            <h3 class="text-3xl font-bold text-yellow-400 mb-6 text-center">About the Creator</h3>
+            <div class="max-w-3xl mx-auto">
+                <p class="text-lg text-gray-300 mb-4">
+                    5E Creature Codex was created by <strong class="text-yellow-400">NamuNinja</strong>, a developer and D&D enthusiast who saw the need for a better creature reference tool during game sessions.
+                </p>
+                <p class="text-lg text-gray-300 mb-4">
+                    After years of fumbling through physical books and PDFs during gameplay, the idea was born: create a fast, searchable, free tool that any DM could use without slowing down the game.
+                </p>
+                <p class="text-lg text-gray-300">
+                    This project represents hundreds of hours of development, all done with love for the game and the community. The code is original work, while all creature content comes from the SRD 5.1 under the Open Game License.
+                </p>
+            </div>
+        </div>
+
+        <!-- Charity Commitment -->
+        <div class="bg-gradient-to-r from-green-900 to-blue-900 bg-opacity-70 rounded-lg p-8 shadow-xl mb-8 border-2 border-green-400">
+            <h3 class="text-3xl font-bold text-yellow-400 mb-6 text-center">🎗️ Charity Commitment</h3>
+            <div class="max-w-3xl mx-auto text-center">
+                <p class="text-lg text-gray-100 mb-4">
+                    <strong class="text-xl">100% of advertising revenue from the mobile app is donated to Extra Life</strong>
+                </p>
+                <p class="text-gray-300 mb-4">
+                    Web advertising helps cover hosting and infrastructure costs, ensuring the app remains free and accessible to all.
+                </p>
+                <p class="text-gray-300 mb-4">
+                    Extra Life is a program of Children's Miracle Network Hospitals that brings together gamers to support kids in their local communities. Since 2008, Extra Life has raised more than $80 million for sick and injured kids.
+                </p>
+                <p class="text-gray-300">
+                    By using the mobile app, you're helping support children's hospitals across North America. Every ad view makes a difference!
+                </p>
+                <a href="https://www.extra-life.org/" target="_blank" class="inline-block mt-4 bg-green-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-green-600 transition">
+                    Learn More About Extra Life →
+                </a>
+            </div>
+        </div>
+
+        <!-- Legal & Licensing -->
+        <div class="bg-gray-900 bg-opacity-70 rounded-lg p-8 shadow-xl mb-8">
+            <h3 class="text-3xl font-bold text-yellow-400 mb-6 text-center">Legal & Licensing</h3>
+            <div class="max-w-4xl mx-auto space-y-6">
+                <div>
+                    <h4 class="text-xl font-semibold text-white mb-3">Open Game License (OGL 1.0a)</h4>
+                    <p class="text-gray-300">
+                        All creature statistics, spells, and game mechanics in this app are <strong>Open Game Content</strong> from the System Reference Document (SRD) 5.1, released by Wizards of the Coast LLC under the Open Game License v1.0a.
+                    </p>
+                    <p class="text-gray-300 mt-2">
+                        This content is © 1993-2025 Wizards of the Coast LLC and is used in accordance with the OGL.
+                    </p>
+                    <a href="OGL-LICENSE.html" class="inline-block mt-3 text-yellow-400 hover:underline">→ View Full OGL License</a>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-semibold text-white mb-3">Original Application Code</h4>
+                    <p class="text-gray-300">
+                        The application source code, user interface design, custom features, and implementation are original works by NamuNinja and are protected by copyright.
+                    </p>
+                    <p class="text-gray-300 mt-2">
+                        Application Code & Design © 2025 NamuNinja
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-semibold text-white mb-3">Third-Party Attribution</h4>
+                    <p class="text-gray-300">This app uses the following open-source libraries:</p>
+                    <ul class="list-disc ml-6 mt-2 text-gray-300 space-y-1">
+                        <li>Tailwind CSS - MIT License</li>
+                        <li>Capacitor (mobile framework) - MIT License</li>
+                    </ul>
+                </div>
+
+                <div class="bg-blue-900 bg-opacity-30 border-l-4 border-blue-400 p-4">
+                    <p class="text-blue-200">
+                        <strong>Important:</strong> This is NOT an official Wizards of the Coast product. Dungeons & Dragons, D&D, and related trademarks are property of Wizards of the Coast LLC.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Details -->
+        <div class="bg-gray-900 bg-opacity-70 rounded-lg p-8 shadow-xl mb-8">
+            <h3 class="text-3xl font-bold text-yellow-400 mb-6 text-center">Technical Information</h3>
+            <div class="max-w-3xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-lg font-semibold text-yellow-400 mb-2">Current Version</h4>
+                        <p class="text-gray-300">v1.3.9 (Version Code 8)</p>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold text-yellow-400 mb-2">Last Updated</h4>
+                        <p class="text-gray-300">November 2025</p>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold text-yellow-400 mb-2">Creatures</h4>
+                        <p class="text-gray-300">322 SRD Creatures + Unlimited Custom</p>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold text-yellow-400 mb-2">Platforms</h4>
+                        <p class="text-gray-300">Web, Android, iOS (coming soon)</p>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold text-yellow-400 mb-2">Technology</h4>
+                        <p class="text-gray-300">HTML5, JavaScript, Capacitor</p>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold text-yellow-400 mb-2">Data Storage</h4>
+                        <p class="text-gray-300">Local Storage (Browser/Device)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Roadmap -->
+        <div class="bg-gray-900 bg-opacity-70 rounded-lg p-8 shadow-xl mb-8">
+            <h3 class="text-3xl font-bold text-yellow-400 mb-6 text-center">Future Plans</h3>
+            <div class="max-w-3xl mx-auto">
+                <p class="text-gray-300 mb-4 text-center">Here's what's coming in future updates:</p>
+                <div class="space-y-3">
+                    <div class="flex items-start space-x-3">
+                        <div class="text-yellow-400 text-xl">📱</div>
+                        <div>
+                            <h4 class="text-white font-semibold">iOS App Release</h4>
+                            <p class="text-gray-400 text-sm">Bring 5E Creature Codex to iPhone and iPad users</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="text-yellow-400 text-xl">🗂️</div>
+                        <div>
+                            <h4 class="text-white font-semibold">Encounter Builder</h4>
+                            <p class="text-gray-400 text-sm">Plan balanced encounters based on party level and size</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="text-yellow-400 text-xl">☁️</div>
+                        <div>
+                            <h4 class="text-white font-semibold">Cloud Sync (Optional)</h4>
+                            <p class="text-gray-400 text-sm">Sync custom creatures across devices with optional account</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="text-yellow-400 text-xl">📊</div>
+                        <div>
+                            <h4 class="text-white font-semibold">Initiative Tracker</h4>
+                            <p class="text-gray-400 text-sm">Manage turn order during combat</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact & Support -->
+        <div class="bg-gray-900 bg-opacity-70 rounded-lg p-8 shadow-xl mb-8">
+            <h3 class="text-3xl font-bold text-yellow-400 mb-6 text-center">Contact & Support</h3>
+            <div class="max-w-2xl mx-auto text-center">
+                <p class="text-gray-300 mb-6">Have questions, feedback, or found a bug?</p>
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="text-white font-semibold mb-2">Need Help?</h4>
+                        <p class="text-gray-400">Check our <a href="faq.html" class="text-yellow-400 hover:underline">FAQ</a> and <a href="tutorial.html" class="text-yellow-400 hover:underline">Tutorial</a> pages</p>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-semibold mb-2">Report Issues</h4>
+                        <p class="text-gray-400">Found a bug or have a feature request? Let us know!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center bg-gradient-to-r from-purple-900 to-indigo-900 rounded-lg p-8 shadow-xl">
+            <h3 class="text-3xl font-bold text-yellow-400 mb-4">Ready to Adventure?</h3>
+            <p class="text-gray-200 mb-6 text-lg">Start using 5E Creature Codex for your next game session!</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="index.html" class="inline-block bg-yellow-400 text-gray-900 px-8 py-3 rounded-lg font-bold hover:bg-yellow-500 transition transform hover:scale-105">
+                    Launch Web App
+                </a>
+                <button onclick="alert('Android app coming soon to Google Play! Stay tuned for the release.')" class="inline-block bg-gray-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-gray-700 transition transform hover:scale-105 cursor-pointer">
+                    Google Play - Coming Soon!
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 bg-opacity-90 mt-16 py-8">
+        <div class="max-w-6xl mx-auto px-4 text-center text-gray-400">
+            <p class="mb-2">5E Creature Codex v1.3.9 | Created with ❤️ by NamuNinja</p>
+            <p class="text-sm">App Code & Design © 2025 NamuNinja | Game Content © Wizards of the Coast LLC (OGL 1.0a)</p>
+            <p class="text-sm mt-4">
+                <a href="index.html" class="text-yellow-400 hover:underline">Home</a> |
+                <a href="tutorial.html" class="text-yellow-400 hover:underline">Tutorial</a> |
+                <a href="faq.html" class="text-yellow-400 hover:underline">FAQ</a> |
+                <a href="OGL-LICENSE.html" class="text-yellow-400 hover:underline">OGL License</a>
+            </p>
+            <p class="text-xs mt-4 text-gray-500">
+                Made for the D&D community • 100% Mobile Ad Revenue → Extra Life Charity
+            </p>
+        </div>
+    </footer>
 </body>
 </html>
